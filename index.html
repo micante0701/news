@@ -3,150 +3,63 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="revised" content="2025/07/01">
+    <meta name="revised" content="2024/11/22">
     <title>News</title>
     <style>
-        .tooltip {
+        .tooltip-word {
             position: relative;
-            cursor: pointer;
+            cursor: help;
             border-bottom: 1px dashed #888;
         }
 
-        .tooltip .tooltiptext {
+        .tooltip-box {
             visibility: hidden;
-            width: max-content;
-            background-color: #333;
+            background: #333;
             color: #fff;
-            text-align: center;
-            padding: 4px 8px;
-            border-radius: 4px;
-
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 5px;
             position: absolute;
-            z-index: 1;
-            top: 125%;
-            /* 框框出現在單字上方 */
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 125%;
+            left: 0;
+            z-index: 10;
+            white-space: pre-wrap;
             opacity: 0;
             transition: opacity 0.3s;
+            width: 220px;
         }
 
-        .tooltip:hover .tooltiptext {
+        .tooltip-word:hover .tooltip-box {
             visibility: visible;
             opacity: 1;
         }
-
-        .container {
-            display: flex;
-        }
-
-        .side {
-            width: 15%;
-        }
-
-        .center {
-            width: 70%;
-        }
-
-        h1 {
-            text-align: center;
-        }
     </style>
     <script>
-
-
+        fetch('dictionary.json')
+            .then(response => response.json())
+            .then(definitions => {
+                document.querySelectorAll('.tooltip-word').forEach(span => {
+                    const word = span.dataset.word;
+                    const meaning = definitions[word];
+                    if (meaning) {
+                        const tooltip = document.createElement('span');
+                        tooltip.className = 'tooltip-box';
+                        tooltip.textContent = meaning;
+                        span.appendChild(tooltip);
+                        span.classList.add('has-tooltip');
+                    }
+                });
+            });
     </script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="side"></div>
-        <div class="center">
-            <span class="tooltip"><span class="tooltiptext"></span></span>
-            <h1><span class="tooltip">MOE<span class="tooltiptext">The Ministry of Education 教育部</span></span> releases
-                <span class="tooltip">guidelines<span class="tooltiptext">n. 準則</span></span> for school
-                cellphone use
-            </h1>
-            <p><span class="tooltip">BALANCING ACT<span class="tooltiptext">balance 平衡 act 措施</span></span>: While
-                cellphones can help <span class="tooltip">accelerate<span class="tooltiptext">v.
-                        加速</span></span> learning, schools must find a balance to <span class="tooltip">avoid<span
-                        class="tooltiptext">v. 避免</span></span> the
-                <span class="tooltip">harmful<span class="tooltiptext">adj. 有害的</span></span>
-                effects of <span class="tooltip">social media<span class="tooltiptext">社群媒體</span></span> and <span
-                    class="tooltip">addiction<span class="tooltiptext">n. 成癮</span></span>,
-                the <span class="tooltip">ministry<span class="tooltiptext">指「教育部」</span></span> said
-            </p>
-            <p>By Hollie Younger / Staff writer, with CNA</p>
-            <p>The <span class="tooltip">Ministry<span class="tooltiptext">n. ministry (政府的)部門</span></span> of <span
-                    class="tooltip">Education<span class="tooltiptext">n. education 教育</span></span><span
-                    class="tooltip"> (MOE)<span class="tooltiptext">The Ministry of Education (MOE) 教育部</span></span>
-                yesterday announced new <span class="tooltip">draft<span class="tooltiptext">n. 草案；草稿</span></span>
-                guidelines for cellphone use in schools
-                below
-                college level, with stricter regulations for lower grades and flexibility for schools or classes to set
-                their
-                own rules.</p>
-            <p>A “centralized management” approach would be adopted for elementary and junior-high schools under the
-                Guidelines
-                for Management of Mobile Device Use in School Campuses Below Senior High Level (高級中等以下學校學生攜帶行動載具到校管理原則).
-            </p>
-            <p>Schools or individual classes would manage rules, but with details subject to approval by school boards.
-            </p>
-            <p>A high-school student looks at a cellphone in front of the entrance of a high school in New Taipei City
-                in an
-                undated photograph.</p>
-            <p>Photo: Tien Yu-hua, Taipei Times</p>
-            <p>As students are minors, parents and guardians would still bear legal responsibility for their behavior
-                and
-                safety, the guidelines say, adding that students would need permission from a legal guardian to bring a
-                mobile
-                phone or similar device on campus.</p>
-            <p>High schools would have more flexibility, allowing students, parents and teachers to jointly decide on
-                management
-                methods, including when phones can be used on campus.</p>
-            <p>High-school students have “self-management abilities” and may bring devices on campus in accordance with
-                school
-                regulations, although schools are encouraged to inform parents of the rules, the ministry said.</p>
-            <p>The student group EdYouth said in a statement that device usage should only be controlled during class
-                time to
-                avoid overregulation.</p>
-            <p>The ministry said that devices must be turned off or switched to airplane mode and stored away during
-                class
-                hours, except when used for educational purposes or emergency situations.</p>
-            <p>Although technology can be used to accelerate learning, there must be a balance to avoid overreliance on
-                personal
-                devices, the harmful effects of social media and addiction, it added.</p>
-            <p>In other education news, MOE officials said they would consider shifting three days around on the
-                academic
-                calender next year, after receiving feedback from parents.</p>
-            <p>Parents’ groups have said that a new semester calendar for elementary schools up to high schools showed
-                that the
-                winter break would be between Jan. 21 and Feb. 10 next year, with school beginning on Feb. 11.</p>
-            <p>However, three days later, the students would be off for the weekend, followed by Lunar New Year’s Eve on
-                Monday,
-                Feb. 16, and then the Lunar New Year holiday until Feb. 19.</p>
-            <p>Parents said they wanted to eliminate the three intervening days, Feb. 11 to 13, to have consecutive days
-                off,
-                making it easier to plan holiday trips.</p>
-            <p>Ministry officials said they would collect feedback to make the adjustment, with one option being to
-                shift the
-                three intervening days, to hold classes on Jan. 21 to 23, at the start of winter break.</p>
-            <p>The summer break for students would be 60 days, from July 1 to Aug. 28, it said.</p>
-            <p>Additional reporting by Rachel Lin</p>
-        </div>
-        <div class="side"></div>
+    <div id="article">
+        <span class="tooltip-word" data-word=""></span>
+        <span class="tooltip-word" data-word="MOE">MOE</span> releases guidelines for school cellphone use. While cellphones
+        can help accelerate learning, schools must
+        find a balance to avoid the harmful effects of social media and addiction, the ministry said.
     </div>
-
-
-
-    <p>
-        He
-        <span class="tooltip">runs
-            <span class="tooltiptext">跑步</span>
-        </span>
-        very fast.
-    </p>
-
 </body>
 
 </html>
