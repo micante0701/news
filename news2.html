@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="revised" content="2024/11/22">
+    <title>尚未決定的標題</title>
+    <style>
+        .tooltip-word {
+            position: relative;
+            cursor: pointer;
+            border-bottom: 1px dotted #555;
+        }
+
+        .tooltip-box {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            position: absolute;
+            top: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1;
+        }
+
+        .tooltip-word:hover .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <script>
+        const definitions = {
+            MOE: "教育部",
+            guidelines: "準則",
+            accelerate: "加速",
+            avoid: "避免",
+            harmful: "有害的",
+            "social media": "社群媒體",
+            addiction: "成癮",
+            ministry: "教育部"
+        };
+
+        document.querySelectorAll('.tooltip-word').forEach(span => {
+            const word = span.dataset.word;
+            const meaning = definitions[word];
+            if (meaning) {
+                const tooltip = document.createElement('span');
+                tooltip.className = 'tooltip-box';
+                tooltip.textContent = meaning;
+                span.appendChild(tooltip);
+            }
+        });
+
+    </script>
+    <div id="article">
+        <!-- <span class="tooltip-word"><span class="tooltip-box"></span></span> -->
+        <span class="tooltip-word" data-word="MOE">MOE</span> releases guidelines for school cellphone use. While cellphones
+        can help accelerate learning, schools must
+        find a balance to avoid the harmful effects of <span class="tooltip-word" data-word="social media">social media</span> and addiction, the ministry said.
+    </div>
+</body>
+
+</html>
