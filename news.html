@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="revised" content="2025/07/03">
+    <title>News 4</title>
+    <style>
+        /* 頁面框架 */
+        .container {
+            display: flex;
+        }
+
+        .side {
+            width: 15%;
+        }
+
+        .center {
+            width: 70%;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 30pt;
+            color: red;
+        }
+
+        p {
+            font-size: 20pt;
+            font-family: "微軟正黑體";
+        }
+
+        .title,
+        .source {
+            text-align: center;
+        }
+
+        .source {
+            text-decoration: none;
+        }
+
+
+        /* 提示框 */
+        .tooltip-word {
+            position: relative;
+            display: inline;
+            cursor: pointer;
+            border-bottom: 1px dotted #555;
+        }
+
+        .tooltip-box {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            position: absolute;
+            top: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1;
+            white-space: pre-wrap;
+            /* white-space: nowrap; */
+            width: max-content;
+            /*  max-width: 100%; */
+        }
+
+        .tooltip-word:hover .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const variants = {
+                guideline: ["guideline", "guidelines"],
+                accelerate: ["accelerate", "accelerated", "accelerates"],
+                announce: ["announce", "announced"],
+                effect: ["effect", "effects"],
+                allow: ["allowing"],
+                centralize: ["centralized"],
+                adopt: ["adopted"],
+                minor: ["minors"],
+                guardian: ["guardian", "guardians"],
+                official: ["officials"],
+                ability: ["abilities"],
+                method: ["methods"],
+                shift: ["shifting"],
+                receive: ["receiving"],
+                group: ["groups"],
+                begin: ["beginning"],
+                situation: ["situations"],
+                board:["boards"],
+                ttest: ["ttest"]
+            };
+
+            const definitions = {
+                MOE: "The Ministry of Education 教育部",
+                board: "n. 委員會/董事會",
+                guideline: "n. 準則",
+                announce: "v. 發佈(法案)",
+                accelerate: "v. 加速",
+                avoid: "v. 避免",
+                draft: "n. 草案/草稿，此指「草案」",
+                harmful: "adj. 有害的",
+                effect: "n. 影響",
+                "social media": "n. 社群媒體",
+                addiction: "n. 成癮",
+                ministry: "n. (政府的)部門，本文指「教育部」",
+                entrance: "n. 門口",
+                undated: "adj. 未註明日期的",
+                photograph: "n. 照片",
+                device: "n. (電子)裝置/器械",
+                campus: "n. 校園",
+                minor: "n. 未成年人",
+                guardian: "n. 監護人，此字含有保護者、護衛者、維護者之義",
+                below: "prep. (年紀、溫度、成績等)小於、低於，\n此指「年紀低於」",
+                similar: "adj. 類似的、相近的，\n「similar device」指「平板電腦」等電子產品",
+                flexibility: "n. 彈性",
+                allow: "允許",
+                jointly: "adv. 連帶地、共同地",
+                centralize: "v. 使集中/處於中央的控制下",
+                management: "n. 管理/經營，此處指「管理」",
+                approach: "v. 接近",
+                adopt: "v. 採用(措施、方案)/收養(子女)，\n此處指「採用」",
+                decide: "v. 決定",
+                "self-management": "n. 自主管理",
+                bear: "v. 承擔/承受/忍受(情緒：壓力、興奮、無聊等)，\n此處指「承擔」",
+                legal: "adj. 法律上的、合法的",
+                technology: "n. 科技",
+                balance: "n. 平衡",
+                official: "n. 官員/官方，此指「教育部官員」",
+                consider: "v. 考慮",
+                shift: "移動/改變，此處指「調整」",
+                ability: "n. 能力",
+                method: "方法/方式",
+                academic: "adj. 學校的/學術的",
+                calendar: "n. 日曆/日程表",
+                around: "adv. 周圍/環繞/在...附近",
+                receive: "v. 收到",
+                feedback: "n. 意見回饋",
+                semester: "n. 學期",
+                group: "n. 團體",
+                "winter break": "n. 寒假",
+                begin: "開始",
+                "Lunar New Year": "農曆新年",
+                "the students would be off": "此處「off」指「放假」",
+                eliminate: "v. 消除/清除",
+                intervening: "adj. 介於...其中的。此處指2/11~13介於兩個假期之間",
+                consecutive: "adj. 連續的/連貫的",
+                holiday: "n. 法定假日",
+                adjustment: "n. 調整",
+                option: "n. 選擇/選項/方案，此處「one option」指「其中一個方案」",
+                hold: "v. 安排/舉行",
+                "summer break": "n. 暑假",
+                "Additional reporting": "「Additional reporting」\n通常出現在新聞文章或報導的\n末尾，表示這位記者也有參與\n本篇文章的報導或資料蒐集",
+                responsibility: "n. 職責/責任。此處「legal responsibility」為「法律責任」的意思",
+                behavior: "n. 行為",
+                "the guidelines": "「the guidelines」指\n「高級中等以下學校學生攜帶行動載具到校管理原則」",
+                "legal guardian": "法定監護人",
+                "mobile phone": "手機(較正式的用字)",
+                "cellphone": "手機(較口語化的用字)",
+                individual: "adj. 各別的",
+                "manage rules": "意指校方或班級有權設定或執行學生使用手機的相關規定。",
+                "subject to": "取決於/視...而定(此片語用法為CEF-C2級)",
+                "approval": "v. 贊成/同意/核准",
+                "overregulation": "over + regulation：n. 過度管制",
+                "EdYouth": "EdYouth是在2022年創立的學生團體\n聚焦關注課綱議題並以對上倡議",
+                "statement": "n. (正式的)聲明/說明/表態",
+                "usage": "n. 使用",
+                "airplane mode": "飛航模式",
+                "stored away": "(物品)收起來/儲存起來",
+                "educational": "adj. 教育的",
+                "purposes": "n. 用途",
+                "emergency": "n. 緊急",
+                "situation": "n. 情況",
+                "overreliance": "over + reliance：n. 過度依賴 ",
+                "In other education news": "在其他教育相關新聞中",
+                "permission": "n. 允許",
+                ttest: "test"
+            };
+
+            // 建立「反向映射」變形詞 → 原詞
+            const inflectionMap = {};
+            for (const [root, forms] of Object.entries(variants)) {
+                forms.forEach(f => inflectionMap[f.toLowerCase()] = root);
+            }
+
+            const article = document.getElementById("article");
+            const originalHTML = article.innerHTML;
+
+            // 避免雙重套用，先排序長的單字（避免 social media 被切成 social）
+            const keys = Object.keys(definitions)
+                .concat(Object.keys(inflectionMap))
+                .sort((a, b) => b.length - a.length)
+                .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+
+            const pattern = new RegExp(`\\b(${keys.join("|")})\\b`, "gi");
+
+            const replaced = originalHTML.replace(pattern, match => {
+                const lower = match.toLowerCase();
+                const root = definitions[match] ? match : inflectionMap[lower];
+                const word = root || match;
+                const meaning = definitions[word];
+                if (meaning) {
+                    return `<span class="tooltip-word">${match}<span class="tooltip-box">${meaning}</span></span>`;
+                }
+                return match;
+            });
+
+            article.innerHTML = replaced;
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="side"></div>
+        <div class="center title">
+            <h1>MOE releases guidelines for school cellphone use</h1>
+        </div>
+        <div class="side"></div>
+    </div>
+    <div class="container">
+        <div class="side"></div>
+        <div class="center" id="article">
+            <p>BALANCING ACT: While cellphones can help accelerate learning, schools must find a balance to avoid the
+                harmful effects of social media and addiction, the ministry said
+            </p>
+            <p>By Hollie Younger / Staff writer, with CNA</p>
+            <p>The Ministry of Education (MOE) yesterday announced new draft guidelines for cellphone use in schools
+                below college level, with stricter regulations for lower grades and flexibility for schools or classes
+                to set their own rules.
+            </p>
+            <p>A "centralized management" approach would be adopted for elementary and junior-high schools under the
+                Guidelines
+                for Management of Mobile Device Use in School Campuses Below Senior High Level (高級中等以下學校學生攜帶行動載具到校管理原則).
+            </p>
+            <p>Schools or individual classes would manage rules, but with details subject to approval by school boards.
+            </p>
+            <p>A high-school student looks at a cellphone in front of the entrance of a high school in New Taipei City
+                undated photograph.</p>
+            <p>As students are minors, parents and guardians would still bear legal responsibility for their behavior
+                and safety, the guidelines say, adding that students would need permission from a legal guardian to
+                bring a mobile phone or similar device on campus.</p>
+            <p>High schools would have more flexibility, allowing students, parents and teachers to jointly decide on
+                management
+                methods, including when phones can be used on campus.</p>
+            <p>High-school students have “self-management abilities” and may bring devices on campus in accordance with
+                school
+                regulations, although schools are encouraged to inform parents of the rules, the ministry said.</p>
+            <p>The student group EdYouth said in a statement that device usage should only be controlled during class
+                time to
+                avoid overregulation.</p>
+            <p>The ministry said that devices must be turned off or switched to airplane mode and stored away during
+                class
+                hours, except when used for educational purposes or emergency situations.</p>
+            <p>Although technology can be used to accelerate learning, there must be a balance to avoid overreliance on
+                personal
+                devices, the harmful effects of social media and addiction, it added.</p>
+            <p>In other education news, MOE officials said they would consider shifting three days around on the
+                academic
+                calendar next year, after receiving feedback from parents.</p>
+            <p>Parents' groups have said that a new semester calendar for elementary schools up to high schools showed
+                that the
+                winter break would be between Jan. 21 and Feb. 10 next year, with school beginning on Feb. 11.</p>
+            <p>However, three days later, the students would be off for the weekend, followed by Lunar New Year's Eve on
+                Monday,
+                Feb. 16, and then the Lunar New Year holiday until Feb. 19.</p>
+            <p>Parents said they wanted to eliminate the three intervening days, Feb. 11 to 13, to have consecutive days
+                off,
+                making it easier to plan holiday trips.</p>
+            <p>Ministry officials said they would collect feedback to make the adjustment, with one option being to
+                shift the
+                three intervening days, to hold classes on Jan. 21 to 23, at the start of winter break.</p>
+            <p>The summer break for students would be 60 days, from July 1 to Aug. 28, it said.</p>
+            <p>Additional reporting by Rachel Lin</p>
+        </div>
+        <div class="side"></div>
+    </div>
+    <div class="container">
+        <div class="side"></div>
+        <div class="center source">
+            <p>原文連結：<a href="https://www.taipeitimes.com/News/front/archives/2025/05/22/2003837293"
+                    target="_blank">https://www.taipeitimes.com/News/front/archives/2025/05/22/2003837293</a>
+        </div>
+        <div class="side"></div>
+    </div>
+    <div id="article">
+        <span class="tooltip-word" data-word=""></span>
+    </div>
+</body>
+
+</html>
