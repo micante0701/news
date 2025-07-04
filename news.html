@@ -9,6 +9,7 @@
         /* 頁面框架 */
         html {
             font-size: clamp(14px, 2vw, 18px);
+            background-color: lightyellow;
         }
 
         .container {
@@ -68,6 +69,8 @@
         .tooltip-word.active {
             background-color: #fffaad;
             border-bottom-color: #999;
+            color: red;
+            font-weight: bold;
         }
 
         /* tooltip 內容樣式 */
@@ -258,7 +261,7 @@
                 span.addEventListener("mouseenter", () => span.classList.add("active"));
                 span.addEventListener("mouseleave", () => span.classList.remove("active"));
 
-                // 手機點擊觸發（避免 hover 沒效果）
+                /* // 手機點擊觸發（避免 hover 沒效果）
                 span.addEventListener("click", () => {
                     document.querySelectorAll(".tooltip-word").forEach(other => {
                         if (other !== span) {
@@ -278,7 +281,7 @@
                         tooltip.style.visibility = visible ? "hidden" : "visible";
                         tooltip.style.opacity = visible ? 0 : 1;
                     }
-                });
+                }); */
             });
         });
     </script>
