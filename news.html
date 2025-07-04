@@ -7,6 +7,10 @@
     <title>News</title>
     <style>
         /* 頁面框架 */
+        html {
+            font-size: clamp(14px, 2vw, 18px);
+        }
+
         .container {
             display: flex;
         }
@@ -30,6 +34,7 @@
         p {
             font-size: 2rem;
             font-family: "微軟正黑體";
+            text-align: justify;
         }
 
         .title,
@@ -43,20 +48,29 @@
 
         a {
             text-decoration: none;
-            font-size: 2rem;
+            /* font-size: 2rem; */
             word-break: break-all;
             /*  overflow-wrap: break-word; */
         }
 
 
-        /* 提示框 */
+        /* 原本樣式 */
         .tooltip-word {
             position: relative;
             display: inline;
             cursor: pointer;
             border-bottom: 1px dotted #555;
+            transition: background-color 0.2s;
+            /* 讓 active 狀態變色有動畫 */
         }
 
+        /* tooltip 被觸發時單字背景變色 */
+        .tooltip-word.active {
+            background-color: #fffaad;
+            border-bottom-color: #999;
+        }
+
+        /* tooltip 內容樣式 */
         .tooltip-box {
             visibility: hidden;
             background-color: #333;
@@ -70,13 +84,27 @@
             opacity: 0;
             transition: opacity 0.2s;
             z-index: 1;
+
+            display: inline-block;
+
             white-space: pre-wrap;
-            /* white-space: nowrap; */
+            /* 【修改】改為支援換行 */
             width: max-content;
-            /*  max-width: 100%; */
-            font-size: 3rem;
+            /* 讓寬度隨內容調整 */
+            max-width: 90vw;
+            /* 限制最大寬度不超出螢幕 */
+            word-break: break-word;
+            /* 處理長字串與網址換行 */
+            overflow-wrap: break-word;
+            /* 同上 */
+            box-sizing: border-box;
+            /* padding 包含在寬度內 */
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            /* 輕微陰影提升可讀性 */
         }
 
+        /* 滑鼠懸停時顯示 tooltip（桌機用） */
         .tooltip-word:hover .tooltip-box {
             visibility: visible;
             opacity: 1;
@@ -103,13 +131,14 @@
                 begin: ["beginning"],
                 situation: ["situations"],
                 board: ["boards"],
+                "mobile device": ["mobile device", "Mobile Device"],
                 ttest: ["ttest"]
             };
 
             const definitions = {
                 MOE: "The Ministry of Education 教育部",
                 board: "n. 委員會/董事會",
-                guideline: "n. 準則",
+                guideline: "n. 準則/原則",
                 announce: "v. 發佈(法案)",
                 accelerate: "v. 加速",
                 avoid: "v. 避免",
@@ -189,38 +218,68 @@
                 "overreliance": "over + reliance：n. 過度依賴 ",
                 "In other education news": "在其他教育相關新聞中",
                 "permission": "n. 允許",
+                "mobile device": "mobile: adj. 可移動的。\nmobile device 可攜帶裝置",
                 ttest: "test"
             };
 
-            // 建立「反向映射」變形詞 → 原詞
+            // 建立變形詞對應表
             const inflectionMap = {};
-            for (const [root, forms] of Object.entries(variants)) {
-                forms.forEach(f => inflectionMap[f.toLowerCase()] = root);
+            for (const [base, forms] of Object.entries(variants)) {
+                forms.forEach(f => inflectionMap[f.toLowerCase()] = base);
             }
 
             const article = document.getElementById("article");
-            const originalHTML = article.innerHTML;
+            const original = article.innerHTML;
 
-            // 避免雙重套用，先排序長的單字（避免 social media 被切成 social）
-            const keys = Object.keys(definitions)
+            // 排序單字，處理雙字詞/較長詞優先
+            const allKeys = Object.keys(definitions)
                 .concat(Object.keys(inflectionMap))
                 .sort((a, b) => b.length - a.length)
-                .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+                .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
 
-            const pattern = new RegExp(`\\b(${keys.join("|")})\\b`, "gi");
+            const regex = new RegExp(`\\b(${allKeys.join("|")})\\b`, "gi");
 
-            const replaced = originalHTML.replace(pattern, match => {
+            // 取代單字為 tooltip 結構
+            const html = original.replace(regex, match => {
                 const lower = match.toLowerCase();
-                const root = definitions[match] ? match : inflectionMap[lower];
-                const word = root || match;
-                const meaning = definitions[word];
+                const base = definitions[match] ? match : inflectionMap[lower];
+                const meaning = definitions[base];
                 if (meaning) {
-                    return `<span class="tooltip-word">${match}<span class="tooltip-box">${meaning}</span></span>`;
+                    return `<span class="tooltip-word" data-word="${base}">${match}<span class="tooltip-box">${meaning}</span></span>`;
                 }
                 return match;
             });
 
-            article.innerHTML = replaced;
+            article.innerHTML = html;
+
+            // hover + 點擊事件控制 active 狀態
+            document.querySelectorAll(".tooltip-word").forEach(span => {
+                // 滑鼠 hover（桌機）
+                span.addEventListener("mouseenter", () => span.classList.add("active"));
+                span.addEventListener("mouseleave", () => span.classList.remove("active"));
+
+                // 手機點擊觸發（避免 hover 沒效果）
+                span.addEventListener("click", () => {
+                    document.querySelectorAll(".tooltip-word").forEach(other => {
+                        if (other !== span) {
+                            other.classList.remove("active");
+                            const tip = other.querySelector(".tooltip-box");
+                            if (tip) {
+                                tip.style.visibility = "hidden";
+                                tip.style.opacity = 0;
+                            }
+                        }
+                    });
+
+                    span.classList.toggle("active");
+                    const tooltip = span.querySelector(".tooltip-box");
+                    if (tooltip) {
+                        const visible = tooltip.style.visibility === "visible";
+                        tooltip.style.visibility = visible ? "hidden" : "visible";
+                        tooltip.style.opacity = visible ? 0 : 1;
+                    }
+                });
+            });
         });
     </script>
 </head>
