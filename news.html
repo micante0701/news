@@ -71,25 +71,24 @@
             display: inline;
             cursor: pointer;
             border-bottom: 1px dotted #555;
-            transition: background-color 0.2s;
             /* 讓 active 狀態變色有動畫 */
+            transition: background-color 0.2s;
 
         }
 
-        /* tooltip 被觸發時單字背景變色 */
+        /* tooltip 被觸發時單字背景變色(被指到的字作變化) */
         .tooltip-word.active {
             background-color: #fffaad;
             border-bottom-color: #999;
             color: red;
             font-weight: bold;
-            font-size: 19pt;
+            font-size: 1.95rem;
         }
 
         /* tooltip 內容樣式 */
         .tooltip-box {
             visibility: hidden;
             background-color: #333;
-
             color: #fff;
             padding: 4px 8px;
             border-radius: 10px;
@@ -100,10 +99,7 @@
             opacity: 0;
             transition: opacity 0.2s;
             z-index: 1;
-
             display: inline-block;
-
-
             /* 【修改】改為支援換行 */
             white-space: pre-wrap;
             /* 讓寬度隨內容調整 */
@@ -117,7 +113,7 @@
             /* padding 包含在寬度內 */
             box-sizing: border-box;
             /* 字體大小 */
-            font-size: 2rem;
+            font-size: 0.99rem;
             /* 輕微陰影提升可讀性 */
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
         }
@@ -306,7 +302,7 @@
     <div class="container">
         <div class="sideLeft textCenter">
             <p>Update Time</p>
-            <p>12</p>
+            <p>15</p>
         </div>
         <div class="center title">
             <h1>MOE releases guidelines for school cellphone use</h1>
