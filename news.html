@@ -62,6 +62,9 @@
             border-bottom: 1px dotted #555;
             transition: background-color 0.2s;
             /* 讓 active 狀態變色有動畫 */
+            /*新增 強制元素可點擊（樣式上）*/
+            pointer-events: auto;
+            touch-action: manipulation;
         }
 
         /* tooltip 被觸發時單字背景變色 */
@@ -245,7 +248,7 @@
                 const base = definitions[match] ? match : inflectionMap[lower];
                 const meaning = definitions[base];
                 if (meaning) {
-                    return `<span class="tooltip-word" tabindex="0" data-word="${base}">${match}<span class="tooltip-box">${meaning}</span></span>`;
+                    return `<span class="tooltip-word"  data-word="${base}">${match}<span class="tooltip-box">${meaning}</span></span>`;
                 }
                 return match;
             });
