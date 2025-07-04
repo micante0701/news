@@ -226,60 +226,65 @@
             };
 
             // 建立變形詞對應表
-            const inflectionMap = {};
+            const inflections = {};
             for (const [base, forms] of Object.entries(variants)) {
-                forms.forEach(f => inflectionMap[f.toLowerCase()] = base);
+                forms.forEach(f => inflections[f.toLowerCase()] = base);
             }
 
             const article = document.getElementById("article");
-            const original = article.innerHTML;
+            const text = article.innerHTML;
 
-            // 排序單字，處理雙字詞/較長詞優先
-            const allKeys = Object.keys(definitions)
-                .concat(Object.keys(inflectionMap))
+            const keys = Object.keys(definitions)
+                .concat(Object.keys(inflections))
                 .sort((a, b) => b.length - a.length)
-                .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+                .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+            const pattern = new RegExp(`\\b(${keys.join("|")})\\b`, "gi");
 
-            const regex = new RegExp(`\\b(${allKeys.join("|")})\\b`, "gi");
-
-            // 取代單字為 tooltip 結構
-            const html = original.replace(regex, match => {
-                const lower = match.toLowerCase();
-                const base = definitions[match] ? match : inflectionMap[lower];
-                const meaning = definitions[base];
-                if (meaning) {
-                    return `<span class="tooltip-word"  data-word="${base}">${match}<span class="tooltip-box">${meaning}</span></span>`;
-                }
-                return match;
+            article.innerHTML = text.replace(pattern, match => {
+                const root = definitions[match] ? match : inflections[match.toLowerCase()];
+                const def = definitions[root];
+                if (!def) return match;
+                const isMultiline = def.includes("\n");
+                const cssClass = isMultiline ? "tooltip-box break" : "tooltip-box";
+                return `<span class="tooltip-word" tabindex="0">${match}<span class="${cssClass}">${def}</span></span>`;
             });
 
-            article.innerHTML = html;
+            // ✅ 加入互動：滑鼠 hover + 手機點擊都適用
+            document.querySelectorAll(".tooltip-word").forEach(word => {
+                const tip = word.querySelector(".tooltip-box");
 
-            // hover + 點擊事件控制 active 狀態
-            document.querySelectorAll(".tooltip-word").forEach(span => {
-                // 滑鼠 hover（桌機）
-                span.addEventListener("mouseenter", () => span.classList.add("active"));
-                span.addEventListener("mouseleave", () => span.classList.remove("active"));
+                // 滑鼠 hover 高亮
+                word.addEventListener("mouseenter", () => word.classList.add("active"));
+                word.addEventListener("mouseleave", () => word.classList.remove("active"));
 
-                // 手機點擊觸發（避免 hover 沒效果）
-                span.addEventListener("click", () => {
-                    document.querySelectorAll(".tooltip-word").forEach(other => {
-                        if (other !== span) {
-                            other.classList.remove("active");
-                            const tip = other.querySelector(".tooltip-box");
-                            if (tip) {
-                                tip.style.visibility = "hidden";
-                                tip.style.opacity = 0;
-                            }
+                // 手機點擊切換 tooltip 顯示 + 高亮（第一次點擊會生效）
+                word.addEventListener("click", e => {
+                    e.stopPropagation();
+                    const isOpen = word.classList.contains("active");
+                    document.querySelectorAll(".tooltip-word").forEach(w => {
+                        w.classList.remove("active");
+                        const t = w.querySelector(".tooltip-box");
+                        if (t) {
+                            t.style.visibility = "hidden";
+                            t.style.opacity = 0;
                         }
                     });
+                    if (!isOpen) {
+                        word.classList.add("active");
+                        tip.style.visibility = "visible";
+                        tip.style.opacity = 1;
+                    }
+                });
+            });
 
-                    span.classList.toggle("active");
-                    const tooltip = span.querySelector(".tooltip-box");
-                    if (tooltip) {
-                        const visible = tooltip.style.visibility === "visible";
-                        tooltip.style.visibility = visible ? "hidden" : "visible";
-                        tooltip.style.opacity = visible ? 0 : 1;
+            // 點空白處收起 tooltip（手機用）
+            document.body.addEventListener("click", () => {
+                document.querySelectorAll(".tooltip-word").forEach(word => {
+                    word.classList.remove("active");
+                    const tip = word.querySelector(".tooltip-box");
+                    if (tip) {
+                        tip.style.visibility = "hidden";
+                        tip.style.opacity = 0;
                     }
                 });
             });
@@ -289,7 +294,7 @@
 
 <body>
     <div class="container">
-        <div class="sideLeft">03:51:40</div>
+        <div class="sideLeft">04:09:34</div>
         <div class="center title">
             <h1>MOE releases guidelines for school cellphone use</h1>
         </div>
