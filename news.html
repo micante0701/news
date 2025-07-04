@@ -252,31 +252,46 @@
 
             article.innerHTML = html;
 
-            // hover + 點擊事件控制 active 狀態
+            //【新增】處理 hover（桌機）與 click（手機）事件，並切換 .active 背景
             document.querySelectorAll(".tooltip-word").forEach(span => {
-                // 滑鼠 hover（桌機）
+                const tip = span.querySelector(".tooltip-box");
+
+                // 電腦 hover 顯示 + 背景變色
                 span.addEventListener("mouseenter", () => span.classList.add("active"));
                 span.addEventListener("mouseleave", () => span.classList.remove("active"));
 
-                // 手機點擊觸發（避免 hover 沒效果）
-                span.addEventListener("click", () => {
+                // 手機／平板 點擊顯示/隱藏 tooltip
+                span.addEventListener("click", e => {
+                    e.stopPropagation();
+                    const isActive = span.classList.contains("active");
+
+                    // 先關掉全部
                     document.querySelectorAll(".tooltip-word").forEach(other => {
-                        if (other !== span) {
-                            other.classList.remove("active");
-                            const tip = other.querySelector(".tooltip-box");
-                            if (tip) {
-                                tip.style.visibility = "hidden";
-                                tip.style.opacity = 0;
-                            }
+                        other.classList.remove("active");
+                        const box = other.querySelector(".tooltip-box");
+                        if (box) {
+                            box.style.visibility = "hidden";
+                            box.style.opacity = 0;
                         }
                     });
 
-                    span.classList.toggle("active");
-                    const tooltip = span.querySelector(".tooltip-box");
-                    if (tooltip) {
-                        const visible = tooltip.style.visibility === "visible";
-                        tooltip.style.visibility = visible ? "hidden" : "visible";
-                        tooltip.style.opacity = visible ? 0 : 1;
+                    // 如果剛剛是非 active，則開啟現在這個
+                    if (!isActive) {
+                        span.classList.add("active");
+                        tip.style.visibility = "visible";
+                        tip.style.opacity = 1;
+                    }
+                });
+            });
+
+            //【新增】點其他地方會關閉 tooltip
+            document.body.addEventListener("click", () => {
+                document.querySelectorAll(".tooltip-word").forEach(span => {
+                    span.classList.remove("active");
+                    const tip = span.querySelector(".tooltip-box");
+                    if (tip) {
+                        tip.style.visibility = "hidden";
+                        tip.style.opacity = 0;
                     }
                 });
             });
