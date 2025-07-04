@@ -9,7 +9,7 @@
         /* 頁面框架 */
         html {
             font-size: clamp(14px, 2vw, 18px);
-            background-color: lightyellow;
+            background-image: url("paper.png");
         }
 
         .container {
@@ -27,6 +27,7 @@
 
         .textCenter {
             text-align: center;
+            font-family: "Arial";
         }
 
         h1 {
@@ -45,6 +46,10 @@
         .title,
         .source {
             text-align: center;
+        }
+
+        .subTitle {
+            font-weight: bold;
         }
 
         .source {
@@ -110,7 +115,7 @@
             /* padding 包含在寬度內 */
             box-sizing: border-box;
             /* 字體大小 */
-            font-size: 0.95rem;
+            font-size: 0.99rem;
             /* 輕微陰影提升可讀性 */
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
         }
@@ -163,6 +168,7 @@
                 situation: ["situations"],
                 board: ["boards"],
                 "mobile device": ["mobile device", "Mobile Device"],
+                "cellphone": ["cellphone", "cellphones"],
                 ttest: ["ttest"]
             };
 
@@ -186,14 +192,14 @@
                 campus: "n. 校園",
                 minor: "n. 未成年人",
                 guardian: "n. 監護人\n此字含有保護者、護衛者、維護者之義",
-                below: "prep. (年紀、溫度、成績等)小於、低於，\n此指「年紀低於」",
+                below: "prep. (年紀、溫度、成績等)小於、低於\n此指「年紀低於」",
                 similar: "adj. 類似的、相近的，\n「similar device」指「平板電腦」等電子產品",
                 flexibility: "n. 彈性",
                 allow: "允許",
                 jointly: "adv. 連帶地、共同地",
                 centralize: "v. 使集中/處於中央的控制下",
                 management: "n. 管理/經營，此處指「管理」",
-                approach: "v. 接近",
+                approach: "n. 方法/方式\nv. 著手處理(某事)\n此處為名詞",
                 adopt: "v. 採用(措施、方案)/收養(子女)，\n此處指「採用」",
                 decide: "v. 決定",
                 "self-management": "n. 自主管理",
@@ -214,9 +220,9 @@
                 semester: "n. 學期",
                 group: "n. 團體",
                 "winter break": "n. 寒假",
-                begin: "開始",
+                begin: "v. 開始",
                 "Lunar New Year": "農曆新年",
-                "the students would be off": "此處「off」指「放假」",
+                "the students would be off": "「off」有「放假」之意",
                 eliminate: "v. 消除/清除",
                 intervening: "adj. 介於...其中的。此處指2/11~13介於兩個假期之間",
                 consecutive: "adj. 連續的/連貫的",
@@ -233,7 +239,7 @@
                 "mobile phone": "手機(較正式的用字)",
                 "cellphone": "手機(較口語化的用字)",
                 individual: "adj. 各別的",
-                "manage rules": "意指校方或班級有權設定或執行學生使用手機的相關規定。",
+                "manage rules": "意指學校或各班級有權制訂\n學生使用手機的相關規定。",
                 "subject to": "取決於/視...而定(此片語用法為CEF-C2級)",
                 "approval": "v. 贊成/同意/核准",
                 "overregulation": "over + regulation：n. 過度管制",
@@ -296,7 +302,7 @@
 <body>
     <a href="https://micante0701.github.io/news" class="floating-home-btn">🏠</a>
     <div class="container">
-        <div class="sideLeft, textCenter">
+        <div class="sideLeft textCenter">
             <p>Update Time</p>
             <p>21:20:19</p>
         </div>
@@ -307,64 +313,80 @@
     </div>
     <div class="container">
         <div class="sideLeft"></div>
-        <div class="center, textStyle" id="article">
-            <p>BALANCING ACT: While cellphones can help accelerate learning, schools must find a balance to avoid the
-                harmful effects of social media and addiction, the ministry said
-            </p>
-            <p>By Hollie Younger / Staff writer, with CNA</p>
-            <p>The Ministry of Education (MOE) yesterday announced new draft guidelines for cellphone use in schools
-                below college level, with stricter regulations for lower grades and flexibility for schools or classes
-                to set their own rules.
-            </p>
-            <p>A "centralized management" approach would be adopted for elementary and junior-high schools under the
-                Guidelines
-                for Management of Mobile Device Use in School Campuses Below Senior High Level (高級中等以下學校學生攜帶行動載具到校管理原則).
-            </p>
-            <p>Schools or individual classes would manage rules, but with details subject to approval by school boards.
-            </p>
-            <p>A high-school student looks at a cellphone in front of the entrance of a high school in New Taipei City
-                undated photograph.</p>
-            <p>As students are minors, parents and guardians would still bear legal responsibility for their behavior
-                and safety, the guidelines say, adding that students would need permission from a legal guardian to
-                bring a mobile phone or similar device on campus.</p>
-            <p>High schools would have more flexibility, allowing students, parents and teachers to jointly decide on
-                management
-                methods, including when phones can be used on campus.</p>
-            <p>High-school students have “self-management abilities” and may bring devices on campus in accordance with
-                school
-                regulations, although schools are encouraged to inform parents of the rules, the ministry said.</p>
-            <p>The student group EdYouth said in a statement that device usage should only be controlled during class
-                time to
-                avoid overregulation.</p>
-            <p>The ministry said that devices must be turned off or switched to airplane mode and stored away during
-                class
-                hours, except when used for educational purposes or emergency situations.</p>
-            <p>Although technology can be used to accelerate learning, there must be a balance to avoid overreliance on
-                personal
-                devices, the harmful effects of social media and addiction, it added.</p>
-            <p>In other education news, MOE officials said they would consider shifting three days around on the
-                academic
-                calendar next year, after receiving feedback from parents.</p>
-            <p>Parents' groups have said that a new semester calendar for elementary schools up to high schools showed
-                that the
-                winter break would be between Jan. 21 and Feb. 10 next year, with school beginning on Feb. 11.</p>
-            <p>However, three days later, the students would be off for the weekend, followed by Lunar New Year's Eve on
-                Monday,
-                Feb. 16, and then the Lunar New Year holiday until Feb. 19.</p>
-            <p>Parents said they wanted to eliminate the three intervening days, Feb. 11 to 13, to have consecutive days
-                off,
-                making it easier to plan holiday trips.</p>
-            <p>Ministry officials said they would collect feedback to make the adjustment, with one option being to
-                shift the
-                three intervening days, to hold classes on Jan. 21 to 23, at the start of winter break.</p>
-            <p>The summer break for students would be 60 days, from July 1 to Aug. 28, it said.</p>
-            <p>Additional reporting by Rachel Lin</p>
+        <div class="center" id="article">
+            <div class="textStyle">
+                <p class="subTitle">BALANCING ACT: While cellphones can help accelerate learning, schools must find a
+                    balance to avoid
+                    the
+                    harmful effects of social media and addiction, the ministry said
+                </p>
+                <p style="color: gray;">By Hollie Younger / Staff writer, with CNA</p>
+                <p>The Ministry of Education (MOE) yesterday announced new draft guidelines for cellphone use in schools
+                    below college level, with stricter regulations for lower grades and flexibility for schools or
+                    classes
+                    to set their own rules.
+                </p>
+                <p>A "centralized management" approach would be adopted for elementary and junior-high schools under the
+                    Guidelines
+                    for Management of Mobile Device Use in School Campuses Below Senior High Level
+                    (高級中等以下學校學生攜帶行動載具到校管理原則).
+                </p>
+                <p>Schools or individual classes would manage rules, but with details subject to approval by school
+                    boards.
+                </p>
+                <p>A high-school student looks at a cellphone in front of the entrance of a high school in New Taipei
+                    City
+                    undated photograph.</p>
+                <p>As students are minors, parents and guardians would still bear legal responsibility for their
+                    behavior
+                    and safety, the guidelines say, adding that students would need permission from a legal guardian to
+                    bring a mobile phone or similar device on campus.</p>
+                <p>High schools would have more flexibility, allowing students, parents and teachers to jointly decide
+                    on
+                    management
+                    methods, including when phones can be used on campus.</p>
+                <p>High-school students have “self-management abilities” and may bring devices on campus in accordance
+                    with
+                    school
+                    regulations, although schools are encouraged to inform parents of the rules, the ministry said.</p>
+                <p>The student group EdYouth said in a statement that device usage should only be controlled during
+                    class
+                    time to
+                    avoid overregulation.</p>
+                <p>The ministry said that devices must be turned off or switched to airplane mode and stored away during
+                    class
+                    hours, except when used for educational purposes or emergency situations.</p>
+                <p>Although technology can be used to accelerate learning, there must be a balance to avoid overreliance
+                    on
+                    personal
+                    devices, the harmful effects of social media and addiction, it added.</p>
+                <p>In other education news, MOE officials said they would consider shifting three days around on the
+                    academic
+                    calendar next year, after receiving feedback from parents.</p>
+                <p>Parents' groups have said that a new semester calendar for elementary schools up to high schools
+                    showed
+                    that the
+                    winter break would be between Jan. 21 and Feb. 10 next year, with school beginning on Feb. 11.</p>
+                <p>However, three days later, the students would be off for the weekend, followed by Lunar New Year's
+                    Eve on
+                    Monday,
+                    Feb. 16, and then the Lunar New Year holiday until Feb. 19.</p>
+                <p>Parents said they wanted to eliminate the three intervening days, Feb. 11 to 13, to have consecutive
+                    days
+                    off,
+                    making it easier to plan holiday trips.</p>
+                <p>Ministry officials said they would collect feedback to make the adjustment, with one option being to
+                    shift the
+                    three intervening days, to hold classes on Jan. 21 to 23, at the start of winter break.</p>
+                <p>The summer break for students would be 60 days, from July 1 to Aug. 28, it said.</p>
+                <p>Additional reporting by Rachel Lin</p>
+            </div>
         </div>
         <div class="sideRight"></div>
     </div>
     <div class="container">
         <div class="sideLeft"></div>
-        <div class="center source">
+        <div class="center source textStyle">
             <p>原文連結：<a href="https://www.taipeitimes.com/News/front/archives/2025/05/22/2003837293"
                     target="_blank">https://www.taipeitimes.com/News/front/archives/2025/05/22/2003837293</a>
         </div>
