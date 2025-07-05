@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="revised" content="2025/07/03">
+    <title>MOE releases guidelines for school cellphone use</title>
+
+    <link rel="stylesheet" href="css/newsPage.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const variants = {
+                price: ["price", "prices"],
+                policy: ["policy", "policies"],
+                farmer: ["farmer", "farmers"],
+                ally: ["ally", "allies"],
+                question: ["question", "questions"],
+                year: ["year", "years"],
+                consumer: ["consumer", "consumers"],
+                item: ["item", "items"],
+                crop: ["crop", "crops"],
+                market: ["market", "markets"],
+                product: ["product", "products"],
+                effort: ["effort", "efforts"],
+                cost: ["cost", "costs"],
+                hectare: ["hectare", "hectares"],
+                week: ["week", "weeks"],
+                barrier: ["barrier", "barriers"],
+                tradition: ["tradition", "traditions"],
+                religion: ["religion", "religions"],
+                investment: ["investment", "investments"],
+                subsidy: ["subsidy", "subsidies"],
+                approach: ["approach", "approaches"],
+                variety: ["variety", "varieties"],
+                roadmap: ["roadmap", "roadmaps"],
+                consumer: ["consumer", "consumers"]
+            };
+
+            const definitions = {
+                implement: "v. 實施",
+                agricultural: "adj. 農業的",
+                policy: "n. 政策",
+                rice: "n. 米 / 稻米",
+                shortage: "n. 短缺",
+                lead: "v. 導致",
+                historic: "adj. 歷史性的",
+                price: "n. 價格",
+                spike: "n. 急升",
+                expose: "v. 揭示 / 暴露",
+                limitation: "n. 限制",
+                encourage: "v. 鼓勵",
+                farmer: "n. 農夫",
+                grow: "v. 種植",
+                crop: "n. 作物",
+                national: "adj. 全國的",
+                staple: "n. 主食 / adj. 主要的",
+                grain: "n. 穀物",
+                remain: "v. 維持",
+                relatively: "adv. 相對地",
+                steady: "adj. 穩定的",
+                ambitious: "adj. 有雄心的",
+                announce: "v. 公布",
+                prepare: "v. 準備",
+                reversal: "n. 逆轉",
+                envisage: "v. 想像 / 設想",
+                bountiful: "adj. 豐富的",
+                output: "n. 產出",
+                secure: "v. 確保",
+                future: "n. 未來",
+                food: "n. 食物",
+                security: "n. 安全",
+                send: "v. 使得…",
+                freefall: "n. 自由落體",
+                hurt: "v. 傷害",
+                influential: "adj. 有影響力的",
+                grapple: "v. 努力處理",
+                prompt: "v. 促使",
+                flood: "n. 大量湧入",
+                import: "n. 進口",
+                interest: "n. 關注 / 興趣",
+                renew: "v. 再次提出 / 更新",
+                pressure: "n. 壓力",
+                ally: "n. 盟友",
+                elusive: "adj. 難以捉摸的",
+                trade: "n. 貿易",
+                deal: "n. 協議",
+                drive: "v. 駕駛",
+                tractor: "n. 拖拉機",
+                principle: "n. 原則",
+                trepidation: "n. 不安 / 恐懼",
+                practice: "n. 實施 / 實踐",
+                remain: "v. 尚未 / 保留",
+                unanswered: "adj. 未解答的",
+                aim: "v. 目標是",
+                complete: "v. 完成",
+                roadmap: "n. 路線圖",
+                middle: "n. 中間",
+                prefecture: "n. 縣 / 行政區",
+                net: "n. 安全網",
+                producer: "n. 生產者",
+                "make sure": "phr. 確保",
+                switch: "v. 轉換",
+                feed: "n. 飼料",
+                processed: "adj. 加工的",
+                till: "v. 耕作",
+                land: "n. 土地",
+                paddy: "n. 稻田",
+                wheat: "n. 小麥",
+                soybean: "n. 大豆",
+                require: "v. 需要",
+                labor: "n. 勞力",
+                machinery: "n. 機械",
+                investment: "n. 投資",
+                allocate: "v. 分配",
+                hectare: "n. 公頃",
+                reduce: "v. 減少",
+                given: "prep. 考慮到",
+                attractive: "adj. 有吸引力的",
+                worry: "v. 擔憂",
+                plunge: "v. 驟降",
+                unchecked: "adj. 無人管控的",
+                implement: "v. 實施",
+                conflicted: "adj. 矛盾的",
+                double: "v. 使增加一倍",
+                retail: "adj. 零售的",
+                bag: "n. 袋",
+                national: "adj. 全國性的",
+                crisis: "n. 危機",
+                settle: "v. 穩定 / 解決",
+                level: "n. 水準",
+                acceptable: "adj. 可接受的",
+                consumer: "n. 消費者",
+                stabilize: "v. 穩定",
+                palatable: "adj. 可口的 / 易於接受的",
+                supermarket: "n. 超市",
+                straight: "adj. 連續的",
+                period: "n. 時期",
+                sacred: "adj. 神聖的",
+                indigenous: "adj. 原生的",
+                religion: "n. 宗教",
+                ingrain: "v. 深植",
+                culture: "n. 文化",
+                variety: "n. 品種",
+                barrier: "n. 障礙",
+                luxury: "n. 奢侈品",
+                consumer: "n. 消費者",
+                fume: "v. 憤怒",
+                policymaker: "n. 政策制定者",
+                imminent: "adj. 即將發生的",
+                election: "n. 選舉",
+                release: "v. 發放",
+                emergency: "n. 緊急情況",
+                stockpile: "n. 儲備",
+                bloc: "n. 團體 / 陣營",
+                dire: "adj. 嚴重的",
+                necessary: "adj. 必要的",
+                prevent: "v. 防止",
+                switch: "v. 轉向",
+                homegrown: "adj. 國產的",
+                opposite: "adj. 相反的",
+                subsidy: "n. 補貼",
+                oversupply: "n. 供過於求",
+                backfire: "v. 事與願違",
+                misread: "v. 誤判",
+                result: "v. 導致",
+                severe: "adj. 嚴重的",
+                surge: "n. 激增",
+                anomaly: "n. 反常",
+                expose: "v. 顯示",
+                approach: "n. 做法 / 方法",
+                recurrence: "n. 再次發生",
+                export: "n. 出口",
+                jump: "v. 激增",
+                redirect: "v. 重新導向",
+                domestic: "adj. 國內的",
+                event: "n. 事件",
+                unrealistic: "adj. 不切實際的",
+                expensive: "adj. 昂貴的",
+                abroad: "adv. 海外",
+                counterintuitive: "adj. 違反直覺的",
+                record: "adj. 空前的 / 記錄的",
+                levy: "n. 稅金",
+                "price out": "phr. 價格高到無法負擔",
+                acquire: "v. 獲得 / 培養",
+                taste: "n. 嗜好 / 口味",
+                conscious: "adj. 有意識的",
+                niche: "adj. 小眾的",
+                competitiveness: "n. 競爭力",
+                consolidate: "v. 合併",
+                artificial: "adj. 人工的",
+                technology: "n. 技術",
+                lower: "v. 降低",
+                fertilizer: "n. 肥料",
+                pesticide: "n. 農藥",
+                fuel: "n. 燃料",
+                production: "n. 生產",
+                cost: "n. 成本",
+                "leads to": "導致"
+            };
+
+            // 建立變形詞對應表
+            const inflectionMap = {};
+            for (const [base, forms] of Object.entries(variants)) {
+                forms.forEach(f => inflectionMap[f.toLowerCase()] = base);
+            }
+
+            const article = document.getElementById("article");
+            const original = article.innerHTML;
+
+            // 排序單字，處理雙字詞/較長詞優先
+            const allKeys = Object.keys(definitions)
+                .concat(Object.keys(inflectionMap))
+                .sort((a, b) => b.length - a.length)
+                .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+
+            const regex = new RegExp(`\\b(${allKeys.join("|")})\\b`, "gi");
+
+            // 取代單字為 tooltip 結構
+            const html = original.replace(regex, match => {
+                const lower = match.toLowerCase();
+                const base = definitions[match] ? match : inflectionMap[lower];
+                const meaning = definitions[base];
+                if (meaning) {
+                    return `<span class="tooltip-word" data-word="${base}">${match}<span class="tooltip-box">${meaning}</span></span>`;
+                }
+                return match;
+            });
+
+            article.innerHTML = html;
+
+            // hover + 點擊事件控制 active 狀態
+            document.querySelectorAll(".tooltip-word").forEach(span => {
+                // 滑鼠 hover（桌機）
+                span.addEventListener("mouseenter", () => span.classList.add("active"));
+                span.addEventListener("mouseleave", () => span.classList.remove("active"));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <a href="news/index.html" class="floating-home-btn">🏠</a>
+    <div class="container">
+        <div class="sideLeft textCenter">
+            <p>Update Time</p>
+            <p>2025/07/06</p>
+            <p>04:00:19</p>
+        </div>
+        <div class="center title">
+            <h1>Japan anxious for farmers to produce more rice</h1>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+    <div class="container">
+        <div class="sideLeft"></div>
+        <div class="center" id="article">
+            <div class="textStyle">
+                <!-- 副標題 -->
+                <p class="subTitle">
+                <p>Japan is to implement a new agricultural policy for rice from 2027 as a rice shortage leads to a
+                    historic price spike and exposes the limitations of the old policy</p>
+                </p>
+                <!-- 新聞記者資料 -->
+                <p style="color: gray;">
+                <p>By Kaori Kaneko / Reuters, JOETSU, Japan</p>
+                </p>
+                <!-- 正文開始 -->
+                <p>For more than half a century, the Japanese government has encouraged its rice farmers to grow less of
+                    the crop so that prices of the national staple grain remained relatively high and steady.</p>
+                <p>Now, under an ambitious agricultural policy announced this year, Tokyo is preparing for a reversal,
+                    envisaging a future of bountiful output that would secure the country's food security without
+                    sending prices into freefall and hurting its politically influential farmers.</p>
+                <p>The new direction has taken on an unexpected urgency as Japanese grapple with a shortage of the
+                    all-important staple, which has prompted a historic spike in prices, a flood of imports and interest
+                    from US President Donald Trump, who has renewed pressure on Japan to buy US rice as part of the
+                    allies' elusive trade deal.</p>
+                <!-- 圖片 -->
+                <div class="subTextImg divImg">
+                    <img src="https://www.taipeitimes.com/images/2025/07/06/P09-250706-318.jpg">
+                    <p>A farmer drives a tractor at Kazuhachi Hosaka's rice farm in Joetsu, Japan, on June 19.</p>
+                    <p>
+                        Photo: Reuters
+                    </p>
+                </div>
+                <p>It is a policy that many farmers like Kazuhachi Hosaka welcome in principle, but with trepidation
+                    because questions over how it would work in practice remain unanswered. The government is aiming to
+                    complete a roadmap by the middle of next year.</p>
+                <p>“We'd want the government to make sure there's some kind of a safety net for producers,” Hosaka said
+                    at his farm in the northern prefecture of Niigata. “It's easy enough to switch rice for feed or
+                    processed foods to staple rice, but tilling land for new paddies or switching from wheat or soybeans
+                    would require labor, machinery and all kinds of investments.”</p>
+                <p>This year, Hosaka allocated all but 10 hectares of his 180-hectare land for staple rice, reducing
+                    feed-use rice by 20 hectares given the attractive prices.</p>
+                <p>However, he worries that prices could plunge if Japan's overall production goes unchecked under the
+                    new policy, set to be implemented from the 2027 crop year.</p>
+                <p>“I do feel conflicted,” Hosaka said about the doubling of retail rice prices to above ￥4,000
+                    (US$27.80) for a 5kg bag this year in what has turned into a national crisis.</p>
+                <p>“It's important that rice prices settle at levels acceptable to both producers and consumers,” he
+                    said.</p>
+                <p>Hosaka hopes prices would stabilize at about ￥3,000 to ￥3,500 — a level that Japanese Prime Minister
+                    Shigeru Ishiba also hopes would be palatable for voters.</p>
+                <p>Supermarket prices fell for a fifth straight week, to ￥3,801 in the seven days to June 22, but were
+                    still 70 percent higher than the same period last year.</p>
+                <p>For Japanese, rice is more than just a staple food. Cultivated in the country for more than 2,000
+                    years, rice is considered sacred in the indigenous Shinto religion and is deeply ingrained in local
+                    tradition and culture. The Japanese are famously proud of their short-grain Japonica variety,
+                    protecting the market with trade barriers.</p>
+                <p>So when rice turned into a luxury item this year, consumers fumed and policymakers — facing imminent
+                    elections — worried. With an eye on voters ahead of an upper house election on July 20, the
+                    government has been releasing emergency rice from its stockpile to sell for about ￥2,000 per 5kg.
+                </p>
+                <p>Farmers — also traditionally an important voting bloc for Ishiba's Liberal Democratic Party — were
+                    told it was a dire but necessary move to protect Japan's food security and prevent consumers from
+                    switching permanently away from homegrown rice.</p>
+                <p>However, for most of the past 50 years, Japan has poured its energy into doing the opposite:
+                    providing subsidies to farmers to grow crops other than staple rice so as to prevent oversupply and
+                    a fall in prices.</p>
+                <p>That system backfired last year when the farm ministry misread supply from the heat-damaged 2023
+                    harvest, resulting in a severe shortage in August that year. The ensuing surge in prices made Japan
+                    an anomaly against a fall in global prices, and exposed the risks of its approach.</p>
+                <p>The new policy, if successful, would prevent a recurrence by allocating 350,000 tonnes of rice for
+                    export in 2030 — an eight-fold jump from 45,000 tonnes last year — that could be redirected to the
+                    domestic market in the event of a shortage, the government says.</p>
+                <p>Some agricultural experts say the policy is unrealistic. The idea of selling expensive Japanese rice
+                    abroad is counterintuitive, especially when even Japan is importing record amounts of the grain
+                    despite the ￥341 per kilogram levy that had previously priced foreign products out of the market.
+                </p>
+                <p>Japanese have also acquired a taste for US Calrose rice, while imports from Taiwan, Thailand and
+                    Vietnam have also been popular with businesses and cost-conscious consumers.</p>
+                <p>“Expensive rice might sell to niche markets, but getting that up to 350,000 tonnes would require
+                    price competitiveness, and there's a long way for that,” said Kazunuki Ohizumi, professor emeritus
+                    at Miyagi University and an expert on agricultural management.</p>
+                <p>The government aims to provide some form of support but also expects farmers to make their own
+                    efforts to consolidate, and make use of artificial intelligence and other technologies to lower
+                    production costs.</p>
+                <p>Meanwhile, Hosaka said, prices of fertilizers, pesticides and fuel have shot up, sending production
+                    costs through the roof.</p>
+                <p>“It's tough,” he said. “The government has released quite a bit of stockpiled rice, so I'm very
+                    worried about prices falling even further.”</p>
+
+
+                
+            </div>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+    <div class="container">
+        <div class="sideLeft"></div>
+        <div class="center source textStyle">
+            <p>原文連結：<a href="https://www.taipeitimes.com/News/biz/archives/2025/07/06/2003839798" target="_blank">https://www.taipeitimes.com/News/biz/archives/2025/07/06/2003839798</a>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+</body>
+
+</html>
