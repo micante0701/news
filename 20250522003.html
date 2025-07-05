@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="revised" content="2025/07/03">
+    <title>Ministry mulls elderly driver regulations</title>
+
+    <link rel="stylesheet" href="css/newsPage.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const variants = {
+                driver: ["driver", "drivers"],
+                license: ["license", "licenses"],
+                pledge: ["pledge", "pledged"],
+                deliberate: ["deliberate", "deliberating"],
+                vehicle: ["vehicle", "vehicles"],
+                lawmaker: ["lawmaker", "lawmakers"],
+                propose: ["propose", "proposed"],
+                plow: ["plow", "plowed"],
+                pedestrian: ["pedestrian", "pedestrians"],
+                kill: ["kill", "killing"],
+                injure: ["injure", "injuring"],
+                contravene: ["contravene", "contravened"],
+                regulation: ["regulation", "regulations"],
+                course: ["course", "courses"],
+                test: ["test", "tests"],
+                subsidy: ["subsidy", "subsidies"],
+                pass: ["pass", "passes"],
+                system: ["system", "systems"],
+                device: ["device", "devices"],
+                equip: ["equip", "equipped"],
+                budget: ["budget", "budgets"],
+                proposal: ["proposal", "proposals"],
+                measure: ["measure", "measures"],
+                occurrence: ["occurrence", "occurrences"],
+                area: ["area", "areas"],
+                limit: ["limit", "limits"],
+                government: ["government", "governments"],
+                walkway: ["walkway", "walkways"],
+                other: ["other", "others"],
+                democratic: ["Democratic"],
+                progressive: ["Progressive"],
+                party: ["Party"],
+                "The transportation ministry": ["The transportation ministry", "the transportation ministry"]
+            };
+
+            const definitions = {
+                ADAS: "先進駕駛輔助系統\nAdvanced Driver Assistance System",
+                "Ministry of Health and Welfare": "衛生福利部\n welfare: n. 社會福利",
+                "monthly pass": "n. 月票\npass: n. 票證",
+                Retired: "v. 退休",
+                "National Taiwan University Hospital": "臺大醫院",
+                Deputy: "次長、副手",
+                proposal: "n. 提案；計畫",
+                democratic: "adj. 民主的",
+                progressive: "adj. 進步的/先進的",
+                party: "n. 政黨；(社交)舞會",
+                DPP: "n. 民主進步黨",
+                Legislator: "n. 立法委員",
+                traffic: "n. 交通",
+                safety: "n. 安全",
+                irrational: "adj. 不合理的",
+                lower: "v. 降低",
+                age: "n. 年齡",
+                threshold: "n. 門檻",
+                elderly: "adj. 年長的",
+                driver: "n. 駕駛",
+                renew: "v. 更新",
+                license: "n. 執照",
+                isolated: "adj. 單一的、孤立的",
+                case: "n. 案例",
+                retired: "adj. 退休的",
+                physician: "n. 醫師",
+                minister: "n. 部長",
+                transportation: "n. 交通運輸",
+                communication: "n. 通訊",
+                pledge: "v. 承諾",
+                deliberate: "v. 深思熟慮",
+                month: "n. 月",
+                require: "v. 要求",
+                install: "v. 安裝",
+                advanced: "adj. 先進的",
+                assistance: "n. 協助",
+                system: "n. 系統",
+                vehicle: "n. 車輛",
+                meeting: "n. 會議",
+                legislature: "n. 立法機構",
+                committee: "n. 委員會",
+                lawmakers: "n. 立法委員",
+                unfreeze: "v. 解凍",
+                funding: "n. 資金",
+                digital: "adj. 數位的",
+                affair: "n. 事務",
+                public: "adj. 公共的",
+                construction: "n. 建設",
+                commission: "n. 委員會",
+                plan: "n. 計畫",
+                scrutiny: "n. 審查",
+                propose: "v. 提議",
+                car: "n. 車輛",
+                plow: "v. 撞入",
+                pedestrian: "n. 行人",
+                kill: "v. 殺害",
+                injure: "v. 使受傷",
+                contravene: "v. 違反",
+                regulation: "n. 規定",
+                safe: "adj. 安全的",
+                training: "n. 訓練",
+                course: "n. 課程",
+                hazard: "n. 危險",
+                perception: "n. 感知",
+                road: "n. 道路",
+                "apart from": "phr. 除了…之外",
+                pass: "v. 通過",
+                physical: "adj. 身體的",
+                exam: "n. 檢查",
+                cognitive: "adj. 認知的",
+                test: "n. 測驗",
+                voluntarily: "adv. 自願地",
+                return: "v. 歸還",
+                subsidy: "n. 補助",
+                purchase: "v. 購買",
+                monthly: "adj. 每月的",
+                nationalist: "adj. 國民黨的",
+                party: "n. 政黨",
+                legislator: "n. 立法委員",
+                necessary: "adj. 必要的",
+                equip: "v. 配備",
+                proactive: "adj. 主動的",
+                protection: "n. 保護",
+                mandate: "v. 強制要求",
+                unintended: "adj. 非預期的",
+                acceleration: "n. 加速",
+                prevention: "n. 預防",
+                device: "n. 裝置",
+                collision: "n. 碰撞",
+                avoidance: "n. 避免",
+                consult: "v. 參考",
+                Europe: "n. 歐洲",
+                Canada: "n. 加拿大",
+                democratic: "adj. 民主的",
+                progressive: "adj. 進步的",
+                subsidize: "v. 補助",
+                installation: "n. 安裝",
+                budget: "n. 預算",
+                enormous: "adj. 龐大的",
+                "aside from": "phr. 除了…之外",
+                taxi: "n. 計程車",
+                ride: "n. 搭乘",
+                fixed: "adj. 固定的",
+                number: "n. 數量",
+                consideration: "n. 考慮",
+                news: "n. 新聞",
+                conference: "n. 記者會",
+                health: "n. 健康",
+                welfare: "n. 福利",
+                include: "v. 包含",
+                "government-funded": "adj. 政府補助的",
+                deputy: "n. 副職",
+                feasible: "adj. 可行的",
+                constitute: "v. 構成",
+                unauthorized: "adj. 未經授權的",
+                use: "n. 使用",
+                purpose: "n. 目的",
+                pediatrician: "n. 小兒科醫師",
+                irrational: "adj. 不合理的",
+                risk: "n. 風險",
+                measure: "n. 措施",
+                scientific: "adj. 科學的",
+                evidence: "n. 證據",
+                compare: "v. 比較",
+                occurrence: "n. 發生率",
+                discussion: "n. 討論",
+                potential: "adj. 潛在的",
+                change: "n. 改變",
+                remote: "adj. 偏遠的",
+                area: "n. 地區",
+                lack: "v. 缺乏",
+                transport: "n. 運輸",
+                effective: "adj. 有效的",
+                incentive: "n. 誘因",
+                limit: "v. 限制",
+                freedom: "n. 自由",
+                travel: "v. 旅行",
+                address: "v. 處理",
+                issue: "n. 問題",
+                local: "adj. 地方的",
+                government: "n. 政府",
+                "speed up": "phr. 加快",
+                construction: "n. 建設",
+                walkway: "n. 步道",
+                "speed limit": "n. 速限",
+                identical: "adj. 相同的",
+                nation: "n. 國家",
+                "The transportation ministry": "交通部",
+                "fund": "v. 提供預算/資助",
+                "note_1": "譯：交通部為了提供補助所需要的預算，預計會非常龐大",
+                "Aside from": "除了...之外",
+                pile: "n. 一堆",
+                mourner: "n. 哀悼者",
+                ground: "n. 地面",
+                intersection: "n. 十字路口",
+                major: "adj. 嚴重的、重大的",
+                "car crash": "n. 車禍",
+                occur: "v. 發生",
+                injure: "v. 使受傷"
+            };
+
+            // 建立變形詞對應表
+            const inflectionMap = {};
+            for (const [base, forms] of Object.entries(variants)) {
+                forms.forEach(f => inflectionMap[f.toLowerCase()] = base);
+            }
+
+            const article = document.getElementById("article");
+            const original = article.innerHTML;
+
+            // 排序單字，處理雙字詞/較長詞優先
+            const allKeys = Object.keys(definitions)
+                .concat(Object.keys(inflectionMap))
+                .sort((a, b) => b.length - a.length)
+                .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+
+            const regex = new RegExp(`\\b(${allKeys.join("|")})\\b`, "gi");
+
+            // 取代單字為 tooltip 結構
+            const html = original.replace(regex, match => {
+                const lower = match.toLowerCase();
+                const base = definitions[match] ? match : inflectionMap[lower];
+                const meaning = definitions[base];
+                if (meaning) {
+                    return `<span class="tooltip-word" data-word="${base}">${match}<span class="tooltip-box">${meaning}</span></span>`;
+                }
+                return match;
+            });
+
+            article.innerHTML = html;
+
+            // hover + 點擊事件控制 active 狀態
+            document.querySelectorAll(".tooltip-word").forEach(span => {
+                // 滑鼠 hover（桌機）
+                span.addEventListener("mouseenter", () => span.classList.add("active"));
+                span.addEventListener("mouseleave", () => span.classList.remove("active"));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <a href="https://micante0701.github.io/news" class="floating-home-btn">🏠</a>
+    <div class="container">
+        <div class="sideLeft textCenter">
+            <p>Update Time</p>
+            <p>2025/07/06</p>
+            <p>00:29:51</p>
+        </div>
+        <div class="center title">
+            <h1>Ministry mulls elderly driver regulations</h1>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+    <div class="container">
+        <div class="sideLeft"></div>
+        <div class="center" id="article">
+            <div class="textStyle">
+                <!-- 副標題 -->
+                <p class="subTitle">
+                    TRAFFIC SAFETY: It is irrational to lower the age threshold for elderly drivers to renew their
+                    driver's license because of an isolated case, a retired physician said
+                </p>
+                <!-- 新聞記者資料 -->
+                <p style="color: gray;">
+                    By Shelley Shan / Staff reporter
+                </p>
+                <!-- 正文開始 -->
+                <p>Minister of Transportation and Communications Chen Shih-kai (陳世凱) yesterday pledged to deliberate for
+                    three months whether elderly drivers should be required to install advanced driver assistance
+                    systems (ADAS) in their vehicles.</p>
+                <p>Chen made the pledge at a meeting of the legislature's Transportation Committee, in which lawmakers
+                    were scheduled to unfreeze the funding of the Ministry of Transportation and Communications, the
+                    Ministry of Digital Affairs and the Public Construction Commission.</p>
+                <p>However, the transportation ministry's plan to lower the age for elderly drivers to renew their
+                    license from 75 to 70 came under scrutiny, which was proposed after a car driven by a 78-year-old
+                    man surnamed Yu (余) on Monday plowed into pedestrians, killing three people and injuring 12.</p>
+
+
+                <!-- 圖片 -->
+                <div class="subTextImg divImg">
+                    <img src="https://www.taipeitimes.com/images/2025/05/22/p03-250522-603.jpg">
+                    <p>A large pile of flowers, toys and snacks are yesterday placed by mourners on the ground in a park
+                        near the intersection where a major car crash occurred in New Taipei City's Sansia District on
+                        Monday. The car crash killed three and injured 12 people.
+                    </p>
+                    <p>
+                        Photo: CNA
+                    </p>
+                </div>
+
+                <p>Elderly drivers who have contravened traffic regulations would be required to take safe driving
+                    training, and courses on hazard perception and road safety when renewing their driver's license,
+                    apart from passing physical exams and cognitive tests.</p>
+                <p>Those who voluntarily return their driver's license would receive a government subsidy when they
+                    purchase a TPass monthly pass.</p>
+                <p>Chinese Nationalist Party (KMT) Legislator Hung Meng-kai (洪孟楷) said that it is necessary for cars to
+                    be equipped with proactive protection systems.</p>
+                <p>Japan mandates that elderly drivers have unintended acceleration prevention devices and collision
+                    avoidance systems installed in their vehicles, Hung said.</p>
+                <p>The transportation ministry should consult the systems in Japan, Europe and Canada, where both new
+                    and old vehicles are required to be equipped with ADAS, Democratic Progressive Party (DPP)
+                    Legislator Lee Kun-tse (李昆澤) said.</p>
+                <p>The government should subsidize installation of the devices, Lee said.</p>
+                <p>All new vehicles are equipped with ADAS, but most elderly people drive older vehicles, Chen said,
+                    adding that the ministry would deliberate whether they should subsidize elderly drivers whose cars
+                    do not have ADAS.</p>
+                <p>The budget the transportation ministry needs to fund the subsidies is expected to be "enormous," he
+                    said.(note_1)</p>
+                <p>"Aside from subsidizing elderly drivers in purchasing TPass, some legislators also suggested that we
+                    subsidize elderly people's taxi rides for a fixed number of times each month. We would take all
+                    these proposals into consideration in the next three months," he said.</p>
+                <p>Chen in a news conference on Tuesday said that the transportation ministry would work with the
+                    Ministry of Health and Welfare to include required physical and cognitive tests for elderly drivers
+                    in the government-funded physical exams for elderly people.</p>
+                <p>Deputy Minister of Health and Welfare Lin Ching-yi (林靜儀) said that Chen's proposal is not feasible,
+                    because it constitutes unauthorized use beyond the agreed-upon purpose of physical exams.</p>
+                <p>Retired National Taiwan University Hospital pediatrician Lee Ping-ing (李秉穎) said that it is
+                    irrational to lower the age threshold for elderly drivers to renew their driver's license because of
+                    an isolated case.</p>
+                <p>Any risk-prevention measure must be backed by scientific evidence, Lee Ping-ing said.</p>
+                <p>The transportation ministry should compare the occurrence rates of traffic accidents among different
+                    age groups before engaging in discussions over a potential change, he said.</p>
+                <p>"To elderly people living in remote areas lacking public transport systems, subsidies for TPass might
+                    not be an effective incentive. Instead, it could limit their freedom to travel," he added.</p>
+                <p>To address the issues of school zone traffic safety, the transportation ministry would work with
+                    local governments to speed up construction of walkways and discuss whether the speed limits in
+                    school zones should be identical across the nation, Chen said.</p>
+
+            </div>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+    <div class="container">
+        <div class="sideLeft"></div>
+        <div class="center source textStyle">
+            <p>原文連結：<a href="https://www.taipeitimes.com/News/taiwan/archives/2025/05/22/2003837307"
+                    target="_blank">https://www.taipeitimes.com/News/taiwan/archives/2025/05/22/2003837307</a>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+</body>
+
+</html>

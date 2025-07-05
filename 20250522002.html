@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="revised" content="2025/07/03">
+    <title>Bull racing in Pakistan puts pride of riders on the line</title>
+
+    <link rel="stylesheet" href="css/newsPage.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const variants = {
+                yoke: ["yoke", "yoked"],
+                spectator: ["spectator", "spectators"],
+                whoop: ["whoop", "whoop"],
+                cheer: ["cheer", "cheer"],
+                hurtle: ["hurtle", "hurtle"],
+                whipping: ["whip", "whipping"],
+                capture: ["capture", "captures"],
+                found: ["find", "found"],
+                root: ["root", "roots"],
+                gather: ["gather", "gather"],
+                gripping: ["grip", "gripping"],
+                relying: ["rely", "relying"],
+                throw: ["throw", "throw"],
+                drag: ["drag", "drag"],
+                generations: ["generation", "generations"],
+                raise: ["raise", "raise"],
+                prices: ["price", "prices"],
+                becomes: ["become", "becomes"],
+                sweets: ["sweet", "sweets"],
+                lure: ["lure", "lure"],
+                prepare: ["prepare", "prepare"],
+                delicacies: ["delicacy", "delicacies"],
+                benefit: ["benefit", "benefit"],
+                competed: ["compete", "competed"],
+                traveling: ["travel", "traveling"],
+                thrilled: ["thrill", "thrilled"],
+                bull: ["Bulls", "bulls", "bull"],
+                frame: ["frame", "frames"],
+                whip: ["whipping"],
+                rope: ["ropes", "rope"],
+                "hang on": ["hangs on"],
+                "stadium": ["stadiums", "stadium"],
+                "province": ["Province's", "Province"],
+                "district": ["District"],
+                "region": ["region's", "region"],
+                "hub": ["hubs", "hub"],
+                "rein": ["reins", "rein"],
+                "grip": ["gripping"],
+                "rely on": ["relying on"],
+                "wedding": ["weddings"],
+                sweet: ["sweet", "sweets"],
+                rise: ["rise", "rises"],
+                pan: ["pan", "pans"],
+                crowd: ["crowd", "crowds"],
+                stallholder: ["stallholder", "stallholders"],
+                prepare: ["prepare", "prepares"],
+                roasted: ["roast", "roasted"],
+                chickpea: ["chickpea", "chickpeas"],
+                delicacy: ["delicacy", "delicacies"],
+                become: ["become", "becomes"],
+                local: ["local", "locals"],
+                benefit: ["benefit", "benefit"],
+                compete: ["compete", "competed"],
+                host: ["host", "hosted"],
+                traveling: ["travel", "traveling"],
+                competitor: ["competitor", "competitors"],
+                place: ["place", "places"],
+                thrill: ["thrill", "thrilled"],
+                other: ["other", "others"],
+                left: ["leave", "left"]
+            };
+
+            const definitions = {
+                yoke: "v. 套上軛\n（尤指）牛軛",
+                plank: "n. 木板",
+                spectator: "n. 觀眾",
+                whoop: "v. (直覺反應、大叫)歡呼",
+                cheer: "v. (有節奏感、帶有鼓舞意味的)歡呼",
+                hurtle: "v. 疾馳",
+                imminent: "adj. 即將發生的\n(本單字等為CEF-C2)",
+                capture: "v. 捕捉",
+                heritage: "n. 傳統/遺產",
+                vibrant: "adj. 熱鬧的/充滿活力的",
+                hub: "n. 中心",
+                jockey: "n. 騎師",
+                crouch: "v. 蹲下",
+                rely: "v. 依賴",
+                instinct: "n. 本能",
+                triumph: "v. 獲勝",
+                chaos: "n. 混亂",
+                platform: "n. 平台",
+                generation: "n. 世代",
+                landowner: "n. 土地擁有者",
+                symbol: "n. 象徵",
+                festive: "adj. 歡樂的",
+                banknote: "n. 鈔票",
+                celebratory: "adj. 慶祝的",
+                stallholder: "n. 攤販",
+                delicacy: "n. 美味佳餚",
+                "hustle and bustle": "phr. 熱鬧繁忙",
+                enterprising: "adj. 有進取心的",
+                thrilled: "adj. 興奮的",
+                Pakistan: "n. 巴基斯坦",
+                bull: "n. 公牛",
+                thick: "adj. 粗的/厚的",
+                wooden: "adj. 木製的",
+                frame: "n. (門、窗、圖畫的)框架",
+                "sun-scorched": "被太陽曬焦的/酷熱乾燥的\nscorched: adj. 燒焦的/燒毀的",
+                field: "n. 田地、土地",
+                racing: "n. (速度)比賽",
+                rope: "n. 粗繩/繩索",
+                honor: "n. 名譽/榮譽\nhonour:英式；\nhonor:美式",
+                track: "n. 小徑/小道/軌道",
+                "a storm of dust": "storm: n. 風暴/暴風雨\ndust: n. 灰塵/塵土\n此處指：\n「塵土被劇烈地揚起像風暴一樣」",
+                whip: "v. 快速移動\nn. 鞭子/皮鞭；黨鞭",
+                rural: "adj. 農村/鄉村的",
+                danger: "n. 危險",
+                Punjabi: "adj. 旁遮普的\n巴基斯坦「旁遮普省」",
+                "hang on": "握緊/抓住",
+                "a pair of": "一對",
+                "traditional": "adj. 傳統的",
+                "raw": "adj. 原始的、未加工的",
+                "village": "n. 村莊",
+                "floodlit": "adj. 燈光照明的\n特別是體育場用的強光燈/泛光燈",
+                "cricket": " n. 板球（運動名稱）",
+                "hockey": " n. 曲棍球",
+                "stadium": " n. 體育場",
+                "root": "n. 根源\nv. (追溯)根源",
+                "province": "n. 省",
+                "district": "n. 行政區",
+                "region": "n. 區域/地區",
+                "hub": "n. 中心",
+                "gather": "v. 聚集在一起/收集(採收)",
+                "witness": "v. 見證\nn. 見證人；(法庭上的)證人",
+                "spectacle": "n. 壯觀場面、景象",
+                "rein": "n. 皮質韁繩",
+                "Malal": "n. 馬拉爾村（位於旁遮普省）",
+                "grip": "v. 緊握",
+                "rely on": "依靠",
+                "drag": "拖/拉",
+                "dirt": "n. 泥土",
+                "entertainment": "n. 娛樂",
+                "tradition": "n. 傳統",
+                "holding races": "舉辦比賽",
+                "generations": "世代\ngenerations: 好幾世代",
+                "chance": "n. 機會",
+                "atmosphere": "n. 氣氛",
+                "banknotes": "鈔票/紙幣",
+                "pride": "自豪；驕傲",
+                "landowners": "n. 地主",
+                "raise": "v. 養育、飼養",
+                "complete with": "phr. 包含、有…在內",
+                practice: "n. 習俗、做法",
+                normally: "adv. 通常",
+                wedding: "n. 婚禮",
+                scent: "n. 香味",
+                freshly: "adv. 新鮮地",
+                fried: "adj. 油炸的",
+                sweet: "n. 甜食",
+                rise: "v. 升起、飄出",
+                pan: "n. 平底鍋",
+                lure: "v. 吸引、引誘",
+                crowd: "n. 人群",
+                stallholder: "n. 攤販",
+                prepare: "v. 準備",
+                roasted: "adj. 烘烤的",
+                chickpea: "n. 鷹嘴豆",
+                delicacy: "n. 美味佳餚",
+                income: "n. 收入",
+                local: "n. 當地人",
+                benefit: "v. 受益",
+                cultural: "adj. 文化的",
+                event: "n. 活動",
+                compete: "v. 競爭、參加比賽",
+                host: "v. 主辦、舉辦",
+                travel: "v. 旅行、移動",
+                across: "prep. 橫越、遍及",
+                competitor: "n. 參賽者",
+                farmer: "n. 農夫",
+                place: "n. 名次、位置",
+                thrilled: "adj. 興奮的、激動的",
+                "leave behind": "phr. 超越、拋在後面"
+            };
+
+            // 建立變形詞對應表
+            const inflectionMap = {};
+            for (const [base, forms] of Object.entries(variants)) {
+                forms.forEach(f => inflectionMap[f.toLowerCase()] = base);
+            }
+
+            const article = document.getElementById("article");
+            const original = article.innerHTML;
+
+            // 排序單字，處理雙字詞/較長詞優先
+            const allKeys = Object.keys(definitions)
+                .concat(Object.keys(inflectionMap))
+                .sort((a, b) => b.length - a.length)
+                .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+
+            const regex = new RegExp(`\\b(${allKeys.join("|")})\\b`, "gi");
+
+            // 取代單字為 tooltip 結構
+            const html = original.replace(regex, match => {
+                const lower = match.toLowerCase();
+                const base = definitions[match] ? match : inflectionMap[lower];
+                const meaning = definitions[base];
+                if (meaning) {
+                    return `<span class="tooltip-word" data-word="${base}">${match}<span class="tooltip-box">${meaning}</span></span>`;
+                }
+                return match;
+            });
+
+            article.innerHTML = html;
+
+            // hover + 點擊事件控制 active 狀態
+            document.querySelectorAll(".tooltip-word").forEach(span => {
+                // 滑鼠 hover（桌機）
+                span.addEventListener("mouseenter", () => span.classList.add("active"));
+                span.addEventListener("mouseleave", () => span.classList.remove("active"));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <a href="https://micante0701.github.io/news" class="floating-home-btn">🏠</a>
+    <div class="container">
+        <div class="sideLeft textCenter">
+            <p>Update Time</p>
+            <p>2025/07/05</p>
+            <p>23:08:04</p>
+        </div>
+        <div class="center title">
+            <h1>
+                Bull racing in Pakistan puts pride of riders on the line
+            </h1>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+    <div class="container">
+        <div class="sideLeft"></div>
+        <div class="center" id="article">
+            <div class="textStyle">
+                <!-- 副標題 -->
+                <p class="subTitle">
+
+                </p>
+                <!-- 新聞記者資料 -->
+                <p style="color: gray;">
+                    AP, MALAL, Pakistan
+                </p>
+                <!-- 正文開始 -->
+                <p>Bulls are yoked together by thick wooden frames in a sun-scorched field of rural Pakistan, while
+                    behind them, holding onto nothing more than ropes and his honor, is a man on a plank.</p>
+                <p>Hundreds of spectators whoop and cheer as the animals begin to hurtle down a track, whipping up a
+                    storm of dust and imminent danger.</p>
+                <p>This is bull racing, Punjabi style.</p>
+                <!-- 圖片 -->
+                <div class="subTextImg divImg">
+                    <img src="https://www.taipeitimes.com/images/2025/05/22/p06-250522-308.jpg">
+                    <p>
+                        A man hangs on as a pair of bulls pull him during a bull race in Malal, Pakistan, on Thursday
+                        last week.
+                    </p>
+                    <p>
+                        Photo: AP
+                    </p>
+                </div>
+
+                <p>The traditional sport captures the raw energy of village life and is a world away from the floodlit
+                    cricket and field hockey stadiums that are found in many Pakistani cities.</p>
+                <p>Bull racing has deep roots in Punjab Province's Attock District. It is more than just a sport there;
+                    it is a part of the region's living heritage.</p>
+                <p>In the village of Malal, one of bull racing's most vibrant hubs, hundreds of people gather every year
+                    to witness the spectacle. Jockeys crouch behind the animals on a plank, gripping onto some reins and
+                    relying on experience and instinct to triumph.</p>
+                <!-- 圖片 -->
+                <div class="subTextImg divImg">
+                    <img src="https://www.taipeitimes.com/images/2025/05/22/p06-250522-305.jpg">
+                    <p>
+                        A man hangs on as a pair of bulls pull him during a bull race in Malal, Pakistan, on Thursday
+                        last week.
+                    </p>
+                    <p>
+                        Photo: AP
+                    </p>
+                </div>
+
+                <p>There is always a chance for chaos, as it is common for the bulls to throw the jockey off his
+                    platform and drag him through the dirt.</p>
+                <p>"This isn't just entertainment; it's tradition," said Sardar Haseeb, whose family has been holding
+                    races for generations.
+                    "We take pride in our animals. Farmers and landowners raise their bulls year round just for this
+                    moment.
+                    People are willing to pay high prices for a winning bull. It becomes a symbol of pride."</p>
+                <p>The bull race creates a festive atmosphere, complete with dancing and banknotes thrown into the air —
+                    a celebratory practice normally seen at weddings.</p>
+                <!-- 圖片 -->
+                <div class="subTextImg divImg">
+                    <img src="https://www.taipeitimes.com/images/2025/05/22/p06-250522-309.jpg">
+                    <p>
+                        A man hangs on as a pair of bulls pull him during a bull race in Malal, Pakistan, on Thursday
+                        last week.
+                    </p>
+                    <p>
+                        Photo: AP
+                    </p>
+                </div>
+                <p>The scent of freshly fried sweets rises from hot pans to lure the crowds. Stallholders prepare
+                    roasted chickpeas and other delicacies. The hustle and bustle becomes a source of income for
+                    enterprising locals, who benefit from the cultural event.</p>
+                <p>More than 100 bulls competed in the event that Haseeb hosted, with people traveling from across
+                    Pakistan to be part of the race.</p>
+                <p>Among the competitors was farmer Muhammad Ramzan.</p>
+                <p>"My bull came in fifth place and I'm thrilled," he said. "It left 95 others behind."</p>
+
+
+            </div>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+    <div class="container">
+        <div class="sideLeft"></div>
+        <div class="center source textStyle">
+            <p>原文連結：<a href="https://www.taipeitimes.com/News/sport/archives/2025/05/22/2003837299"
+                    target="_blank">https://www.taipeitimes.com/News/sport/archives/2025/05/22/2003837299</a>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+</body>
+
+</html>
