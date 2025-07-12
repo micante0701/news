@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="revised" content="2025/07/12">
+    <title>點餐</title>
+    <!--     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <script>
+        function a() {
+            const devicePixelRatio = window.devicePixelRatio;
+            const screenWidth = window.screen.width;
+            const screenHeight = window.screen.height;
+            const innerWidth = window.innerWidth;
+            const innerHeight = window.innerHeight;
+
+            const zoomLevel = (innerWidth / screenWidth) * devicePixelRatio;
+
+            console.log("📐 裝置像素比 (devicePixelRatio):", devicePixelRatio);
+            console.log("📱 螢幕解析度:", screenWidth + " x " + screenHeight);
+            console.log("🖥 視窗尺寸 (inner):", innerWidth + " x " + innerHeight);
+            console.log("🔍 預估顯示比例 (縮放比):", zoomLevel.toFixed(2));
+            alert(`寬${screenWidth}高${screenHeight}視窗寬${innerWidth}視窗高${innerHeight}`)
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>My First Bootstrap Page</h1>
+        <button onclick="a()">CLICK</button>
+        <p>This part is inside a .container class.</p>
+        <p>The .container class provides a responsive fixed width container.</p>
+        <p>Resize the browser window to see that the container width will change at different breakpoints.</p>
+    </div>
+
+</body>
+
+</html>
