@@ -1,0 +1,149 @@
+/* 頁面框架 */
+        html {
+            background-image: url("../images/paper.png");
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sideLeft {
+            width: 10%;
+        }
+
+        .sideRight {
+            width: 10%;
+        }
+
+        .side{
+            width: 10%;
+        }
+
+        .center {
+            width: 80%;
+        }
+
+        .textCenter {
+            text-align: center;
+            font-family: "Arial";
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 3rem;
+            color: red;
+        }
+
+        .textStyle {
+            font-size: 2rem;
+            font-family: "微軟正黑體";
+            text-align: justify;
+        }
+
+        .title,
+        .source {
+            text-align: center;
+        }
+
+        /* 副標題 */
+        .subTitle {
+            font-weight: bold;
+        }
+
+        .subTextImg {
+            font-size: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .divImg{
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        /* 原本樣式 */
+        .tooltip-word {
+            position: relative;
+            display: inline;
+            cursor: pointer;
+            border-bottom: 1px dotted #555;
+            /* 讓 active 狀態變色有動畫 */
+            transition: background-color 0.2s;
+
+        }
+
+        /* tooltip 被觸發時單字背景變色(被指到的字作變化) */
+        .tooltip-word.active {
+            background-color: #fffaad;
+            border-bottom-color: #999;
+            color: red;
+            font-weight: bold;
+            font-size: 1.95rem;
+        }
+
+        /* tooltip 內容樣式 */
+        .tooltip-box {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 10px;
+            position: absolute;
+            top: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1;
+            display: inline-block;
+            /* 【修改】改為支援換行 */
+            white-space: pre-wrap;
+            /* 讓寬度隨內容調整 */
+            width: max-content;
+            /* 限制最大寬度不超出螢幕 */
+            /* max-width: 90vw; */
+            /* 處理長字串與網址換行 */
+            word-break: break-word;
+            /* 同上 */
+            overflow-wrap: break-word;
+            /* padding 包含在寬度內 */
+            box-sizing: border-box;
+            /* 字體大小 */
+            font-size: 1rem;
+            /* 輕微陰影提升可讀性 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        /* 滑鼠懸停時顯示 tooltip（桌機用） */
+        .tooltip-word:hover .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* 漂浮按鈕 */
+        .floating-home-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 50%;
+            font-size: 20px;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            transition: background-color 0.2s ease;
+            font-size: 3rem;
+        }
+
+        .floating-home-btn:hover {
+            background-color: #388E3C;
+        }
