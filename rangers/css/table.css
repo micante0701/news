@@ -1,0 +1,71 @@
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    background: radial-gradient(1200px at 20% 10%, #0b1228 0%, #060913 40%, #02040a 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* 背景固定，不跟著捲動 */
+    background-size: cover;
+    /* 拉伸鋪滿整個頁面 */
+    color: #a8ffea;
+    font-family: "微軟正黑體";
+}
+
+/* 表格容器 */
+.table-container {
+    margin: 40px auto;
+    max-width: 900px;
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    background: rgba(10, 15, 31, 0.6);
+    backdrop-filter: blur(6px) saturate(140%);
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px rgba(0, 255, 255, 0.08) inset, 0 0 24px rgba(0, 255, 255, 0.08), 0 0 48px rgba(255, 43, 214, 0.06);
+}
+
+/* 表格本體 */
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #a8ffea;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+
+/* 表頭 */
+.table-container th {
+    background: linear-gradient(90deg, rgba(0, 240, 255, 0.15), rgba(255, 43, 214, 0.15));
+    color: #00f0ff;
+    text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
+    padding: 12px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.25);
+    font-weight: 600;
+}
+
+/* 表格內容 */
+.table-container td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+/* 交錯列效果 */
+.table-container tr:nth-child(even) {
+    background: rgba(255, 43, 214, 0.05);
+}
+
+.table-container tr:nth-child(odd) {
+    background: rgba(0, 240, 255, 0.05);
+}
+
+/* 滑鼠懸停效果 */
+.table-container tr:hover {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
+
+h1,
+.renewMsg {
+    text-align: center;
+}
