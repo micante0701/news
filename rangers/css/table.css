@@ -14,7 +14,7 @@ body {
 
 /* 表格容器 */
 .table-container {
-    margin: 40px auto;
+    margin: 10px auto;
     max-width: 900px;
     padding: 20px;
     border: 1px solid rgba(0, 255, 255, 0.25);

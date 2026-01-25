@@ -39,6 +39,7 @@ select {
 #contentFrame {
     flex: 1;
     /* 填滿剩餘空間，永遠貼底 */
-    border: 1px solid #00ffff;
+    /* border: 1px solid #00ffff; */
+    border: none;
     width: 100%;
 }
