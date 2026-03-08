@@ -1,6 +1,7 @@
 /* ↓↓↓ 文字設定：中文標楷體、英文Arial ↓↓↓ */
 body{
     font-family: "CustomFont";
+    font-size: 1rem;
 }
 
 @font-face {
