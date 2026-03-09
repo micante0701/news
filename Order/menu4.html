@@ -10,62 +10,70 @@
   <!-- <link rel="stylesheet" href="./css/order4.css"> -->
   <style>
     .container {
-      display: grid;
-      grid-template-columns: 1fr minmax(300px, 900px) 1fr;
-      gap: 16px;
-    }
+    display: grid;
+    grid-template-columns: 1fr minmax(350px, 1200px) 1fr;
+    gap: 16px;
+}
 
-    .main {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
+.main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
 
-    .menu-category {
-      border: 1.5px dashed gray;
-      transition: all 0.3s ease;
-      padding: 20px;
-      margin: 20px;
-      width: 250px;
-    }
+.menu-category {
+    border: 1.5px dashed gray;
+    transition: all 0.3s ease;
+    padding: 20px 20px 0 20px;
+    margin: 20px 20px 0 20px;
+}
 
-    .menu-category:hover {
-      border: 1.5px dashed red;
-    }
+.menu-category:hover {
+    border: 1.5px dashed red;
+}
 
-    .menu-head {
-      text-align: center;
-    }
+.menu-head {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-    .menu-detail {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 10px;
-      border-bottom: 1.5px dashed gray;
-      transition: all 0.3s ease;
-    }
+.menu-detail {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px dashed gray;
+    transition: all 0.3s ease;
+}
 
-    .menu-detail:hover {
-      border-bottom: 1.5px dashed red;
-    }
+.menu-detail:hover {
+    border-bottom: 1.5px dashed red;
+}
 
-    .menu-img img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin: 10px 0 10px 0;
-    }
+.menu-detail:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 
-    .menu-text {}
+.menu-img img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px 0 10px 0;
+}
 
-    .menu-name div {
-      margin-bottom: 10px;
-    }
+.menu-text {}
 
-    .menu-price {
-      color: red;
-      font-weight: bold;
-    }
+.menu-name div {
+    margin-bottom: 10px;
+}
+
+.menu-price {
+    color: red;
+    font-weight: bold;
+}
   </style>
 </head>
 
@@ -102,9 +110,9 @@
               <div>綠茶</div>
               <div>Black Tea</div>
             </div>
-            <div class="menu-price">$400</div>
             <p>Black liquid tea</p>
           </div>
+          <div class="menu-price">$400</div>
         </article>
         <article class="menu-detail">
           <div class="menu-img">
@@ -115,9 +123,9 @@
               <div>白茶</div>
               <div>Black Tea</div>
             </div>
-            <div class="menu-price">$400</div>
             <p>Black liquid tea</p>
           </div>
+          <div class="menu-price">$400</div>
         </article>
       </section>
 
