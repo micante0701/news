@@ -20,6 +20,12 @@
       gap: 16px;
     }
 
+    /* 分類項目數量、寬度控制 */
+    .main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
     @media (max-width: 768px) {
       aside {
         display: none;
@@ -28,12 +34,10 @@
       .container {
         grid-template-columns: 1fr;
       }
-    }
 
-    /* 分類項目數量、寬度控制 */
-    .main {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      .main {
+        grid-template-columns: 1fr;
+      }
     }
 
     .menu-category {
@@ -138,7 +142,7 @@
           <div class="menu-text">
             <div class="menu-name">
               <div>綠茶</div>
-              <div>Black Tea</div>
+              <div>Green Tea</div>
               <p>Green liquid tea</p>
             </div>
           </div>
@@ -151,7 +155,7 @@
           <div class="menu-text">
             <div class="menu-name">
               <div>白茶</div>
-              <div>Black Tea</div>
+              <div>White Tea</div>
               <p>White liquid tea</p>
             </div>
           </div>
@@ -168,7 +172,7 @@
               <p>Delicate traces of precious blue liquid, extracted from the mystical blue pillow.</p>
             </div>
           </div>
-          <div class="menu-price">$400</div>
+          <div class="menu-price">$888</div>
         </article>
       </section>
 
