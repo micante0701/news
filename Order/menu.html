@@ -3,531 +3,127 @@
 
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>菜單測試4</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/cssReset.css">
+  <link rel="stylesheet" href="./css/font.css">
+  <link rel="stylesheet" href="./css/menu.css">
   <style>
-    /* ===== 整體版面 ===== */
-    body {
-      /* padding: 0px; */
-      margin: 0px;
-    }
 
-    .layout {
-      display: flex;
-      align-items: stretch;
-      /* ★ 保持 flex 父容器，讓左右 sidebar 與 main 並排 */
-    }
-
-    /* ===== Sidebar ===== */
-    /* ★ 修改：允許縮小並加入過渡效果，方便在窄視窗時位移/隱藏 */
-    .sidebar {
-      flex: 0 1 100px;
-      /* ★ 修改：基準 100px，允許縮小 */
-      min-width: 0;
-      /* ★ 新增：允許在 flex 中縮到 0 */
-      box-sizing: border-box;
-      background-color: #ccc;
-      padding: 10px;
-      /* transform/opacity 用於「位移消失」的動畫效果 */
-      /* transition: transform 0.28s ease, opacity 0.28s ease, width 0.28s ease;
-      z-index: 2; */
-    }
-
-    /* ===== Main ===== */
-    .main {
-      flex: 1 1 auto;
-      /* 自動填滿剩餘空間並可縮放 */
-      min-width: 0;
-      /* ★ 新增：避免內容阻止縮小 */
-      padding: 10px;
-      box-sizing: border-box;
-      background: #fff;
-    }
-
-    /* ===== 外層容器（category 卡片容器） ===== */
-    /* 保留 flex-wrap 行為，卡片固定寬度由 .category 控制 */
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      width: 100%;
-      box-sizing: border-box;
-      /* ★ 新增：預設最多 3 欄（3*300 + 2*gap） */
-      max-width: calc(3 * 300px + 2 * 20px);
-      /* 940px */
-      margin: 0 auto;
-      /* 讓內容高度隨元素變化 */
-      align-items: flex-start;
-    }
-
-    /* ===== 每個分類區塊（固定寬度卡片） ===== */
-    .category {
-      flex: 0 0 300px;
-      /* ★ 保留：固定寬度 300px（不放大、不縮小） */
-      border: 1.5px dashed #ccc;
-      padding: 10px;
-      box-sizing: border-box;
-      transition: border-color 0.6s ease;
-      background-color: #fcfcfc;
-    }
-
-    /* hover 效果 */
-    .category:hover {
-      border-color: red;
-    }
-
-    .category h2 {
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .category .menu-item:last-child {
-      border-bottom: none;
-      /* ★ 新增：最後一個不顯示底線 */
-    }
-
-    /* ===== 商品卡片（內層用 flex） ===== */
-    .menu-item {
-      display: flex;
-      align-items: center;
-      border-bottom: 1.5px dashed #ccc;
-      padding: 12px;
-      margin: 5px 0;
-      transition: border-bottom-color 0.3s ease;
-    }
-
-    .menu-item:hover {
-      border-bottom-color: red;
-    }
-
-    .menu-item img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-right: 16px;
-    }
-
-    .menu-item .info {
-      flex: 1;
-    }
-
-    .menu-item .price {
-      color: red;
-      font-weight: bold;
-      margin-left: 16px;
-    }
-
-    /* ===== 斷點：當視窗小於 940px 時，最多顯示 2 欄 ===== */
-    /* ★ 新增：把 container 的 max-width 調成 2 欄寬度，讓卡片自動換行成 2 列 */
-    @media (max-width: 940px) {
-      .container {
-        max-width: calc(2 * 300px + 1 * 20px);
-        /* 620px */
-      }
-    }
-
-    /* ===== 斷點：當視窗小於 620px 時，顯示 1 欄，並隱藏 sidebar ===== */
-    /* 620 = 1*300 + 0*gap + 餘裕（可視需求微調） */
-    /* ★ 新增：當只剩一欄時，將 sidebar 位移並隱藏（視覺上消失） */
-    @media (max-width: 620px) {
-      .container {
-        max-width: 300px;
-        /* 只容納 1 個 category */
-        justify-content: center;
-      }
-
-      /* 將 sidebar 位移到畫面外並隱藏互動 */
-      .sidebar {
-        transform: translateX(-120%);
-        /* 向左位移（看起來消失） */
-        opacity: 0;
-        pointer-events: none;
-        width: 0;
-        /* ★ 新增：縮到 0 寬度，避免佔空間 */
-        padding: 0;
-        margin: 0;
-      }
-
-      /* 右側 sidebar（如果有）也隱藏 */
-      /* 假設左右 sidebar 都使用 .sidebar class */
-      /* 若右側使用不同 class，請同樣加入相同規則 */
-    }
-
-    /* ===== 更極端的情況：非常窄或極端放大（例如 Ctrl + + 到 500%） ===== */
-    /* 當視窗小於 360px 時，強制隱藏 sidebar 並讓 main 佔滿整個寬度 */
-    @media (max-width: 360px) {
-      .sidebar {
-        display: none;
-        /* 更強力的隱藏（避免殘留） */
-      }
-
-      .main {
-        flex: 1 1 100%;
-        padding: 8px;
-      }
-
-      .container {
-        max-width: 300px;
-        gap: 12px;
-      }
-    }
-
-    /* ===== RWD：卡片內部在手機改成直排 ===== */
-    @media (max-width: 600px) {
-      .menu-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .menu-item img {
-        margin-bottom: 8px;
-        margin-right: 0;
-      }
-
-      .menu-item .price {
-        margin-top: 8px;
-        margin-left: 0;
-      }
-    }
-
-    /* ↓↓↓ Navbar控制區 ↓↓↓ */
-    /* 基本盒模型 */
-    * {
-      box-sizing: border-box;
-    }
-
-    /* local-nav：頁面內導覽（非整站導覽） */
-    .local-nav {
-      background: #2b2b2b;
-      color: #fff;
-      width: 100%;
-    }
-
-    /* 內層容器：置中並左右分佈 */
-    .local-nav__inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    /* 區域品牌 / 標題 */
-    .local-nav__brand {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.05rem;
-      padding: 6px 8px;
-      display: inline-block;
-    }
-
-    /* 選單（桌機：水平排列） */
-    .local-nav__menu {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* 選單項目 */
-    .local-nav__item {
-      margin: 0;
-    }
-
-    /* 連結樣式（像按鈕） */
-    .local-nav__menu a {
-      display: inline-block;
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background-color .18s ease, transform .12s ease;
-    }
-
-    /* hover / focus 效果 */
-    .local-nav__menu a:hover {
-      background: rgba(255, 255, 255, 0.06);
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    /* 強調動作（登入） */
-    .local-nav__action {
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 6px 12px;
-    }
-
-    .local-nav__action:hover,
-    .local-nav__action:focus {
-      background: #ff6666;
-      border-color: transparent;
-      color: #fff;
-    }
-
-    /* 漢堡按鈕（桌機隱藏） */
-    .local-nav__toggle {
-      display: none;
-      background: transparent;
-      border: 0;
-      padding: 8px;
-      cursor: pointer;
-    }
-
-    .local-nav__bar {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: #fff;
-      margin: 4px 0;
-      transition: transform .18s ease, opacity .18s ease;
-    }
-
-    /* 響應式：窄螢幕時顯示漢堡並隱藏水平選單 */
-    @media (max-width: 720px) {
-      .local-nav__toggle {
-        display: inline-block;
-      }
-
-      /* 預設隱藏選單，改為下拉卡片 */
-      .local-nav__menu {
-        display: none;
-        position: absolute;
-        right: 16px;
-        top: calc(100% + 8px);
-        background: #2b2b2b;
-        border-radius: 8px;
-        padding: 8px;
-        flex-direction: column;
-        min-width: 160px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-        z-index: 40;
-      }
-
-      .local-nav__menu .local-nav__item {
-        width: 100%;
-      }
-
-      .local-nav__menu a {
-        width: 100%;
-        padding: 10px 12px;
-        border-radius: 6px;
-      }
-
-      /* JS 切換 .show 時顯示選單 */
-      .local-nav__menu.show {
-        display: flex;
-      }
-
-      /* 漢堡變 X（由 JS 切換 .active） */
-      .local-nav__toggle.active .local-nav__bar:nth-child(1) {
-        transform: translateY(6px) rotate(45deg);
-      }
-
-      .local-nav__toggle.active .local-nav__bar:nth-child(2) {
-        opacity: 0;
-      }
-
-      .local-nav__toggle.active .local-nav__bar:nth-child(3) {
-        transform: translateY(-6px) rotate(-45deg);
-      }
-    }
-
-    /* 鍵盤焦點可見性 */
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid rgba(255, 255, 255, 0.12);
-      outline-offset: 2px;
-    }
-
-
-    /* ↑↑↑ Navbar控制區 ↑↑↑ */
   </style>
-  <script>
-    // 最小 JS：切換選單顯示並同步 aria-expanded
-    document.addEventListener('DOMContentLoaded', function () {
-      const btn = document.querySelector('.local-nav__toggle');
-      const menu = document.getElementById('local-menu');
 
-      if (!btn || !menu) return;
-
-      btn.addEventListener('click', function (e) {
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded)); // 同步 aria
-        btn.classList.toggle('active'); // 漢堡動畫
-        menu.classList.toggle('show');  // 顯示/隱藏選單
-      });
-
-      // 點擊外部關閉選單（提升 UX）
-      document.addEventListener('click', function (e) {
-        if (!menu.classList.contains('show')) return;
-        if (btn.contains(e.target) || menu.contains(e.target)) return;
-        btn.setAttribute('aria-expanded', 'false');
-        btn.classList.remove('active');
-        menu.classList.remove('show');
-      });
-    });
-
-  </script>
 </head>
 
 <body>
-  <nav class="local-nav" aria-label="頁面導覽">
-    <div class="local-nav__inner"> <!-- 品牌 / 區域標題（若可點回該頁首頁或區域首頁用 <a>） --> <a href="#" class="local-nav__brand"
-        aria-label="回到本區首頁">店名</a> <!-- 漢堡按鈕（行動裝置顯示） --> <button class="local-nav__toggle" aria-expanded="false"
-        aria-controls="local-menu" aria-label="切換選單"> <span class="local-nav__bar"></span> <span
-          class="local-nav__bar"></span> <span class="local-nav__bar"></span> </button> <!-- 區域選單（語意化的清單） -->
-      <ul id="local-menu" class="local-nav__menu">
-        <li class="local-nav__item"><a href="#">按鈕1</a></li>
-        <li class="local-nav__item"><a href="#">按鈕2</a></li>
-        <li class="local-nav__item"><a href="#">按鈕3</a></li>
-        <li class="local-nav__item"><a href="#" class="local-nav__action">登入</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div class="layout">
-    <aside class="sidebar">左側 Sidebar</aside>
+  <nav>Navigation Bar</nav>
+  <div class="container">
+
+    <aside>left</aside>
+
     <main class="main">
-      <div class="container">
-        <section class="category">
-          <h2>水果</h2>
-          <article class="menu-item">
-            <img src="./image/menu/tea_1.png" alt="紅茶">
-            <div class="info">
-              <div>紅茶</div>
-              <p>Black tea</p>
-            </div>
-            <div class="price">100</div>
-          </article>
-          <article class="menu-item">
-            <img src="./image/menu/tea_2.png" alt="紅茶">
-            <div class="info">
-              <div>鮮奶茶</div>
-              <p>Milk tea</p>
-            </div>
-            <div class="price">120</div>
-          </article>
-          <article class="menu-item">
-            <img src="./image/menu/tea_1.png" alt="紅茶">
-            <div class="info">
-              <div>紅茶</div>
-              <p>Black tea</p>
-            </div>
-            <div class="price">100</div>
-          </article>
-          <article class="menu-item">
-            <img src="./image/menu/tea_2.png" alt="紅茶">
-            <div class="info">
-              <div>鮮奶茶</div>
-              <p>Milk tea</p>
-            </div>
-            <div class="price">120</div>
-          </article>
-        </section>
-        <section class="category">
-          <h2>水果</h2>
-          <article class="menu-item">
-            <img src="./image/menu/tea_1.png" alt="紅茶">
-            <div class="info">
-              <div>紅茶</div>
-              <p>Black tea</p>
-            </div>
-            <div class="price">100</div>
-          </article>
-          <article class="menu-item">
-            <img src="./image/menu/tea_2.png" alt="紅茶">
-            <div class="info">
-              <div>鮮奶茶</div>
-              <p>Milk tea</p>
-            </div>
-            <div class="price">120</div>
-          </article>
-        </section>
-        <section class="category">
-          <h2>水果</h2>
-          <article class="menu-item">
-            <img src="./image/menu/tea_1.png" alt="紅茶">
-            <div class="info">
-              <div>紅茶</div>
-              <p>Black tea</p>
-            </div>
-            <div class="price">100</div>
-          </article>
-          <article class="menu-item">
-            <img src="./image/menu/tea_2.png" alt="紅茶">
-            <div class="info">
-              <div>鮮奶茶</div>
-              <p>Milk tea</p>
-            </div>
-            <div class="price">120</div>
-          </article>
-        </section>
-        <section class="category">
-          <h2>水果</h2>
-          <article class="menu-item">
-            <img src="./image/menu/tea_1.png" alt="紅茶">
-            <div class="info">
-              <div>紅茶</div>
-              <p>Black tea</p>
-            </div>
-            <div class="price">100</div>
-          </article>
-          <article class="menu-item">
-            <img src="./image/menu/tea_2.png" alt="紅茶">
-            <div class="info">
-              <div>鮮奶茶</div>
-              <p>Milk tea</p>
-            </div>
-            <div class="price">120</div>
-          </article>
-        </section>
-        <section class="category">
-          <h2>水果</h2>
-          <article class="menu-item">
-            <img src="./image/menu/tea_1.png" alt="紅茶">
-            <div class="info">
-              <div>紅茶</div>
-              <p>Black tea</p>
-            </div>
-            <div class="price">100</div>
-          </article>
-          <article class="menu-item">
-            <img src="./image/menu/tea_2.png" alt="紅茶">
-            <div class="info">
-              <div>鮮奶茶</div>
-              <p>Milk tea</p>
-            </div>
-            <div class="price">120</div>
-          </article>
-        </section>
-        <section class="category">
-          <h2>水果</h2>
-          <article class="menu-item">
-            <img src="./image/menu/tea_1.png" alt="紅茶">
-            <div class="info">
-              <div>紅茶</div>
-              <p>Black tea</p>
-            </div>
-            <div class="price">100</div>
-          </article>
-          <article class="menu-item">
-            <img src="./image/menu/tea_2.png" alt="紅茶">
-            <div class="info">
-              <div>鮮奶茶</div>
-              <p>Milk tea</p>
-            </div>
-            <div class="price">120</div>
-          </article>
-        </section>
-      </div>
+
+      <section class="menu-category">
+        <div class="menu-head">茶</div>
+        <div class="menu-head">Tea</div>
+
+        <article class="menu-detail">
+          <img class="menu-img" src="./image/menu/tea_1.png" alt="紅茶">
+          <div class="menu-textArea">
+            <header class="menu-text-head">
+              <h2>紅茶</h2>
+              <data class="menu-price">$400</data>
+            </header>
+            <h3>Black Tea</h3>
+            <p class="detailText">Black liquid tea</p>
+          </div>
+        </article>
+
+        <article class="menu-detail">
+          <img class="menu-img" src="./image/menu/tea_2.png" alt="綠茶">
+          <div class="menu-textArea">
+            <header class="menu-text-head">
+              <h2>綠茶</h2>
+              <data class="menu-price">$400</data>
+            </header>
+            <h3>Green Tea</h3>
+            <p class="detailText">Green liquid tea</p>
+          </div>
+        </article>
+
+        <article class="menu-detail">
+          <img class="menu-img" src="./image/menu/tea_3.png" alt="白茶">
+          <div class="menu-textArea">
+            <header class="menu-text-head">
+              <h2>白茶</h2>
+              <data class="menu-price">$400</data>
+            </header>
+            <h3>White Tea</h3>
+            <p class="detailText">White liquid tea</p>
+          </div>
+        </article>
+
+        <article class="menu-detail">
+          <img class="menu-img" src="./image/menu/tea_4.png" alt="藍枕茶">
+          <div class="menu-textArea">
+            <header class="menu-text-head">
+              <h2>藍枕茶</h2>
+              <data class="menu-price">$400</data>
+            </header>
+            <h3>Black Tea</h3>
+            <p class="detailText">Delicate traces of precious blue liquid, extracted from the mystical blue pillow.</p>
+          </div>
+        </article>
+        
+      </section>
+
+      <section class="menu-category">
+        <div class="menu-head">茶</div>
+        <div class="menu-head">Tea</div>
+        <article class="menu-detail">
+          <img class="menu-img" src="./image/menu/tea_1.png" alt="紅茶">
+          <div class="menu-textArea">
+            <header class="menu-text-head">
+              <h2>紅茶</h2>
+              <data class="menu-price">$400</data>
+            </header>
+            <h3>Black Tea</h3>
+            <p class="detailText">Black liquid tea</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="menu-category">
+        <div class="menu-head">茶</div>
+        <div class="menu-head">Tea</div>
+        <article class="menu-detail">
+          <img class="menu-img" src="./image/menu/tea_1.png" alt="紅茶">
+          <div class="menu-textArea">
+            <header class="menu-text-head">
+              <h2>紅茶</h2>
+              <data class="menu-price">$400</data>
+            </header>
+            <h3>Black Tea</h3>
+            <p class="detailText">Black liquid tea</p>
+          </div>
+        </article>
+        <article class="menu-detail">
+          <img class="menu-img" src="./image/menu/tea_1.png" alt="紅茶">
+          <div class="menu-textArea">
+            <header class="menu-text-head">
+              <h2>紅茶</h2>
+              <data class="menu-price">$400</data>
+            </header>
+            <h3>Black Tea</h3>
+            <p class="detailText">Black liquid tea</p>
+          </div>
+        </article>
+      </section>
     </main>
-    <aside class="sidebar">右側 Sidebar</aside>
+
+    <aside>right</aside>
+
   </div>
+
 </body>
 
 </html>
