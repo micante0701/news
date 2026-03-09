@@ -1,0 +1,123 @@
+body {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+/* 版面分左右兩側及中間主區域 */
+.container {
+    display: grid;
+    grid-template-columns: 1fr minmax(350px, 1200px) 1fr;
+    gap: 16px;
+}
+
+/* 分類項目數量、寬度控制 */
+.main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    aside {
+        display: none;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .main {
+        grid-template-columns: 1fr;
+    }
+}
+
+.menu-category {
+    border: 1.5px dashed #e6e6e6;
+    transition: all 0.3s ease;
+    padding: 20px 20px 0 20px;
+    margin: 20px 20px 0 20px;
+    background-color: #fcfcfc;
+}
+
+.menu-category:hover {
+    border: 1.5px dashed red;
+}
+
+.menu-head {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.menu-detail {
+    display: grid;
+    grid-template-columns: minmax(80px, 80px) 1fr;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px dashed #e6e6e6;
+    transition: all 0.3s ease;
+}
+
+.menu-detail:hover {
+    border-bottom: 1.5px dashed red;
+}
+
+.menu-detail:hover .menu-text-head {
+    color: red;
+}
+
+/* 清除末尾底線 */
+.menu-detail:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.menu-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px 0 10px 0;
+    object-fit: cover;
+}
+
+.menu-textArea {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.menu-text-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu-price {
+    text-align: right;
+}
+
+.detailText {
+    font-size: 1rem;
+    margin: 10px 0 10px 0;
+    padding: 10px 0 10px 0;
+}
+
+.menu-name p {
+    font-size: 1rem;
+}
+
+.menu-price {
+    color: red;
+    font-weight: bold;
+}
