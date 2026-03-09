@@ -7,102 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/cssReset.css">
   <link rel="stylesheet" href="./css/font.css">
-  <!-- <link rel="stylesheet" href="./css/order4.css"> -->
+  <link rel="stylesheet" href="./css/order4.css">
   <style>
-    body {
-      font-size: 1.5rem;
-    }
-
-    /* 版面分左右兩側及中間主區域 */
-    .container {
-      display: grid;
-      grid-template-columns: 1fr minmax(350px, 1200px) 1fr;
-      gap: 16px;
-    }
-
-    @media (max-width: 768px) {
-      aside {
-        display: none;
-      }
-
-      .container {
-        grid-template-columns: minmax(350px, 768px);
-      }
-    }
-
-    /* 分類項目數量、寬度控制 */
-    .main {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
-
-    .menu-category {
-      border: 1.5px dashed gray;
-      transition: all 0.3s ease;
-      padding: 20px 20px 0 20px;
-      margin: 20px 20px 0 20px;
-    }
-
-    .menu-category:hover {
-      border: 1.5px dashed red;
-    }
-
-    .menu-head {
-      text-align: center;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .menu-detail {
-      display: grid;
-      grid-template-columns: minmax(80px, 90px) 5fr 1fr;
-      align-items: center;
-      gap: 16px;
-      padding-bottom: 20px;
-      margin-bottom: 20px;
-      border-bottom: 1.5px dashed gray;
-      transition: all 0.3s ease;
-    }
-
-    .menu-detail:hover {
-      border-bottom: 1.5px dashed red;
-    }
-
-    /* 清除末尾底線 */
-    .menu-detail:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .menu-img img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin: 10px 0 10px 0;
-    }
-
-    .menu-text {}
-
-
-
-    .menu-name div,
-    .menu-name p {
-      margin: 20px 0;
-    }
-
-    .menu-name div {
-      font-weight: bold;
-    }
-
-    .menu-name p {
-      font-size: 1rem;
-    }
-
-    .menu-price {
-      color: red;
-      font-weight: bold;
-    }
+    
   </style>
 
 </head>
@@ -140,7 +47,7 @@
               <div>綠茶</div>
               <div>Black Tea</div>
             </div>
-            <p>Black liquid tea</p>
+            <p>Green liquid tea</p>
           </div>
           <div class="menu-price">$400</div>
         </article>
@@ -153,7 +60,7 @@
               <div>白茶</div>
               <div>Black Tea</div>
             </div>
-            <p>Black liquid tea</p>
+            <p>White liquid tea</p>
           </div>
           <div class="menu-price">$400</div>
         </article>
