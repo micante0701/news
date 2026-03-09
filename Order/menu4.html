@@ -9,73 +9,102 @@
   <link rel="stylesheet" href="./css/font.css">
   <!-- <link rel="stylesheet" href="./css/order4.css"> -->
   <style>
+    body {
+      font-size: 1.5rem;
+    }
+
+    /* 版面分左右兩側及中間主區域 */
     .container {
-    display: grid;
-    grid-template-columns: 1fr minmax(350px, 1200px) 1fr;
-    gap: 16px;
-}
+      display: grid;
+      grid-template-columns: 1fr minmax(350px, 1200px) 1fr;
+      gap: 16px;
+    }
 
-.main {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-}
+    @media (max-width: 768px) {
+      aside {
+        display: none;
+      }
 
-.menu-category {
-    border: 1.5px dashed gray;
-    transition: all 0.3s ease;
-    padding: 20px 20px 0 20px;
-    margin: 20px 20px 0 20px;
-}
+      .container {
+        grid-template-columns: minmax(350px, 768px);
+      }
+    }
 
-.menu-category:hover {
-    border: 1.5px dashed red;
-}
+    /* 分類項目數量、寬度控制 */
+    .main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
 
-.menu-head {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
+    .menu-category {
+      border: 1.5px dashed gray;
+      transition: all 0.3s ease;
+      padding: 20px 20px 0 20px;
+      margin: 20px 20px 0 20px;
+    }
 
-.menu-detail {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1.5px dashed gray;
-    transition: all 0.3s ease;
-}
+    .menu-category:hover {
+      border: 1.5px dashed red;
+    }
 
-.menu-detail:hover {
-    border-bottom: 1.5px dashed red;
-}
+    .menu-head {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-.menu-detail:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
+    .menu-detail {
+      display: grid;
+      grid-template-columns: minmax(80px, 90px) 5fr 1fr;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1.5px dashed gray;
+      transition: all 0.3s ease;
+    }
 
-.menu-img img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 10px 0 10px 0;
-}
+    .menu-detail:hover {
+      border-bottom: 1.5px dashed red;
+    }
 
-.menu-text {}
+    /* 清除末尾底線 */
+    .menu-detail:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
 
-.menu-name div {
-    margin-bottom: 10px;
-}
+    .menu-img img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 10px 0 10px 0;
+    }
 
-.menu-price {
-    color: red;
-    font-weight: bold;
-}
+    .menu-text {}
+
+
+
+    .menu-name div,
+    .menu-name p {
+      margin: 20px 0;
+    }
+
+    .menu-name div {
+      font-weight: bold;
+    }
+
+    .menu-name p {
+      font-size: 1rem;
+    }
+
+    .menu-price {
+      color: red;
+      font-weight: bold;
+    }
   </style>
-    
+
 </head>
 
 <body>
@@ -97,6 +126,50 @@
             <div class="menu-name">
               <div>紅茶</div>
               <div>Black Tea</div>
+              <p>Black liquid tea</p>
+            </div>
+          </div>
+          <div class="menu-price">$400</div>
+        </article>
+        <article class="menu-detail">
+          <div class="menu-img">
+            <img src="./image/menu/tea_2.png" alt="綠茶">
+          </div>
+          <div class="menu-text">
+            <div class="menu-name">
+              <div>綠茶</div>
+              <div>Black Tea</div>
+            </div>
+            <p>Black liquid tea</p>
+          </div>
+          <div class="menu-price">$400</div>
+        </article>
+        <article class="menu-detail">
+          <div class="menu-img">
+            <img src="./image/menu/tea_3.png" alt="白茶">
+          </div>
+          <div class="menu-text">
+            <div class="menu-name">
+              <div>白茶</div>
+              <div>Black Tea</div>
+            </div>
+            <p>Black liquid tea</p>
+          </div>
+          <div class="menu-price">$400</div>
+        </article>
+      </section>
+
+      <section class="menu-category">
+        <div class="menu-head">茶</div>
+        <div class="menu-head">Tea</div>
+        <article class="menu-detail">
+          <div class="menu-img">
+            <img src="./image/menu/tea_1.png" alt="紅茶">
+          </div>
+          <div class="menu-text">
+            <div class="menu-name">
+              <div>紅茶</div>
+              <div>Black Tea</div>
             </div>
             <p>Black liquid tea</p>
           </div>
@@ -142,9 +215,9 @@
               <div>紅茶</div>
               <div>Black Tea</div>
             </div>
-            <div class="menu-price">$400</div>
             <p>Black liquid tea</p>
           </div>
+          <div class="menu-price">$400</div>
         </article>
         <article class="menu-detail">
           <div class="menu-img">
@@ -155,9 +228,9 @@
               <div>綠茶</div>
               <div>Black Tea</div>
             </div>
-            <div class="menu-price">$400</div>
             <p>Black liquid tea</p>
           </div>
+          <div class="menu-price">$400</div>
         </article>
         <article class="menu-detail">
           <div class="menu-img">
@@ -168,9 +241,9 @@
               <div>白茶</div>
               <div>Black Tea</div>
             </div>
-            <div class="menu-price">$400</div>
             <p>Black liquid tea</p>
           </div>
+          <div class="menu-price">$400</div>
         </article>
       </section>
 
@@ -185,10 +258,10 @@
             <div class="menu-name">
               <div>紅茶</div>
               <div>Black Tea</div>
+              <p>Black liquid tea</p>
             </div>
-            <div class="menu-price">$400</div>
-            <p>Black liquid tea</p>
           </div>
+          <div class="menu-price">$400</div>
         </article>
         <article class="menu-detail">
           <div class="menu-img">
@@ -199,9 +272,9 @@
               <div>綠茶</div>
               <div>Black Tea</div>
             </div>
-            <div class="menu-price">$400</div>
             <p>Black liquid tea</p>
           </div>
+          <div class="menu-price">$400</div>
         </article>
         <article class="menu-detail">
           <div class="menu-img">
@@ -212,97 +285,9 @@
               <div>白茶</div>
               <div>Black Tea</div>
             </div>
-            <div class="menu-price">$400</div>
             <p>Black liquid tea</p>
           </div>
-        </article>
-      </section>
-
-      <section class="menu-category">
-        <div class="menu-head">茶</div>
-        <div class="menu-head">Tea</div>
-        <article class="menu-detail">
-          <div class="menu-img">
-            <img src="./image/menu/tea_1.png" alt="紅茶">
-          </div>
-          <div class="menu-text">
-            <div class="menu-name">
-              <div>紅茶</div>
-              <div>Black Tea</div>
-            </div>
-            <div class="menu-price">$400</div>
-            <p>Black liquid tea</p>
-          </div>
-        </article>
-        <article class="menu-detail">
-          <div class="menu-img">
-            <img src="./image/menu/tea_2.png" alt="綠茶">
-          </div>
-          <div class="menu-text">
-            <div class="menu-name">
-              <div>綠茶</div>
-              <div>Black Tea</div>
-            </div>
-            <div class="menu-price">$400</div>
-            <p>Black liquid tea</p>
-          </div>
-        </article>
-        <article class="menu-detail">
-          <div class="menu-img">
-            <img src="./image/menu/tea_3.png" alt="白茶">
-          </div>
-          <div class="menu-text">
-            <div class="menu-name">
-              <div>白茶</div>
-              <div>Black Tea</div>
-            </div>
-            <div class="menu-price">$400</div>
-            <p>Black liquid tea</p>
-          </div>
-        </article>
-      </section>
-
-      <section class="menu-category">
-        <div class="menu-head">茶</div>
-        <div class="menu-head">Tea</div>
-        <article class="menu-detail">
-          <div class="menu-img">
-            <img src="./image/menu/tea_1.png" alt="紅茶">
-          </div>
-          <div class="menu-text">
-            <div class="menu-name">
-              <div>紅茶</div>
-              <div>Black Tea</div>
-            </div>
-            <div class="menu-price">$400</div>
-            <p>Black liquid tea</p>
-          </div>
-        </article>
-        <article class="menu-detail">
-          <div class="menu-img">
-            <img src="./image/menu/tea_2.png" alt="綠茶">
-          </div>
-          <div class="menu-text">
-            <div class="menu-name">
-              <div>綠茶</div>
-              <div>Black Tea</div>
-            </div>
-            <div class="menu-price">$400</div>
-            <p>Black liquid tea</p>
-          </div>
-        </article>
-        <article class="menu-detail">
-          <div class="menu-img">
-            <img src="./image/menu/tea_3.png" alt="白茶">
-          </div>
-          <div class="menu-text">
-            <div class="menu-name">
-              <div>白茶</div>
-              <div>Black Tea</div>
-            </div>
-            <div class="menu-price">$400</div>
-            <p>Black liquid tea</p>
-          </div>
+          <div class="menu-price">$400</div>
         </article>
       </section>
 
