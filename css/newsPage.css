@@ -37,7 +37,7 @@
 
         .textStyle {
             /* 原本是2rem暫時改4rem */
-            font-size: 4rem;
+            font-size: 2rem;
             font-family: "微軟正黑體";
             text-align: justify;
         }
@@ -87,7 +87,7 @@
             color: red;
             font-weight: bold;
             /* 原1.95暫改3 */
-            font-size: 3rem;
+            font-size: 1.95rem;
         }
 
         /* tooltip 內容樣式 */
