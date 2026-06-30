@@ -20,7 +20,7 @@
         }
 
         .center {
-            width: 80%;
+            width: 100%;
         }
 
         .textCenter {
@@ -36,7 +36,8 @@
         }
 
         .textStyle {
-            font-size: 2rem;
+            /* 原本是2rem暫時改4rem */
+            font-size: 4rem;
             font-family: "微軟正黑體";
             text-align: justify;
         }
@@ -85,7 +86,8 @@
             border-bottom-color: #999;
             color: red;
             font-weight: bold;
-            font-size: 1.95rem;
+            /* 原1.95暫改3 */
+            font-size: 3rem;
         }
 
         /* tooltip 內容樣式 */
