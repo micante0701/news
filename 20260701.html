@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="revised" content="2025/07/03">
+    <title>Japan anxious for farmers to produce more rice</title>
+
+    <link rel="stylesheet" href="css/newsPage.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const variants = {
+                price: ["price", "prices"],
+            };
+
+            const definitions = {
+                "金谿": "地名，指金谿縣，在今天的江西省",
+                "民": "平民、老百姓",
+                "世": "世代",
+                "隸": "屬於、隸屬。這裡指的是「以……為業」或「身份屬於（農民）」",
+                "耕": "耕田、務農",
+                "生": "生長",
+                "五歲": "五年",
+                "未嘗": "不曾",
+                "識": "認識、看過",
+                "書具": "書寫工具，這裡具體指「筆、墨、紙、硯」文房四寶。",
+                "忽": "忽然",
+                "啼": "哭",
+                "求": "索取、要求",
+                "之": "代名詞，指方仲永的「詩」",
+                "異": "對……感到詫異（奇怪）",
+                "旁近": "",
+                "與": "給予",
+                "即": "立即",
+                "書": "書寫",
+                "并": "並且",
+                "自為其名": "自己寫上自己的名字",
+                "養父母": "奉養、孝順父母",
+                "收族": "團結宗族、使宗族和睦凝聚。「收」有聚攏、團結的意思",
+                "自是": "從此、從這時候開始。自：「從」；是：「這」",
+                "指物作詩": "指定事物讓他作詩",
+                "立就": "立刻完成",
+                "文理": "詩的文采與條理（情理）",
+                "皆有可觀者": "都有值得觀賞、讚賞的地方",
+                "邑人": "同縣的人。邑：「縣」",
+                "稍稍": "漸漸地、慢慢地。古代的「稍稍」跟現代意思不同，不是一點點，而是「漸進、漸漸」的意思",
+                "賓客其父": "把他的父親當作賓客般款待。「賓客」在這裡是名詞當動詞用，稱為使動或意動用法",
+                "或": "代名詞，指「有的人」",
+                "乞": "求取",
+                "利": "以……為利，也就是認為……有利可圖",
+                "其然": "這樣的情況（指前面提到大家又是請客又是送錢的狀況）",
+                "也": "句末助詞，表判斷或肯定",
+                "日": "副詞，每天、天天",
+                "扳": "通「攀」，強拉、牽引的意思。",
+                "環": "四處、周圍",
+                "謁": "「謁」音「一ㄝˋ」，拜訪、謁見之意",
+                "於": "介係詞，「向」或「到」之意",
+                "不使學": "不讓他學習"
+            };
+
+            // 建立變形詞對應表
+            const inflectionMap = {};
+            for (const [base, forms] of Object.entries(variants)) {
+                forms.forEach(f => inflectionMap[f.toLowerCase()] = base);
+            }
+
+            const article = document.getElementById("article");
+            const original = article.innerHTML;
+
+            // 排序單字，處理雙字詞/較長詞優先
+            const allKeys = Object.keys(definitions)
+                .concat(Object.keys(inflectionMap))
+                .sort((a, b) => b.length - a.length)
+                .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+
+            // const regex = new RegExp(`\\b(${allKeys.join("|")})\\b`, "gi");
+            const regex = new RegExp(`(${allKeys.join("|")})`, "g");
+
+            // 取代單字為 tooltip 結構
+            const html = original.replace(regex, match => {
+                const lower = match.toLowerCase();
+                const base = definitions[match] ? match : inflectionMap[lower];
+                const meaning = definitions[base];
+                if (meaning) {
+                    return `<span class="tooltip-word" data-word="${base}">${match}<span class="tooltip-box">${meaning}</span></span>`;
+                }
+                return match;
+            });
+
+            article.innerHTML = html;
+
+            // hover + 點擊事件控制 active 狀態
+            document.querySelectorAll(".tooltip-word").forEach(span => {
+                // 滑鼠 hover（桌機）
+                span.addEventListener("mouseenter", () => span.classList.add("active"));
+                span.addEventListener("mouseleave", () => span.classList.remove("active"));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- <a href="index.html" class="floating-home-btn">🏠</a> -->
+    <div class="container">
+        <!-- <div class="sideLeft textCenter">
+            <p>Update Time</p>
+            <p>2026/07/01</p>
+        </div> -->
+        <div class="center title">
+            <h1>〈傷仲永〉</h1>
+            <h2>王安石</h2>
+        </div>
+        <!-- <div class="sideRight"></div> -->
+    </div>
+    <div class="container">
+        <div class="sideLeft"></div>
+        <div class="center" id="article">
+            <div class="textStyle">
+                <div class="content">
+                    <h5 class="hide-title">第一段</h5>
+                    <p>
+                        金谿民方仲永，世隸耕。仲永生五年，未嘗識書具，忽啼求之。父母異，借旁近與之。即書詩四句，并自為其名。其詩以養父母、收族為意，傳一鄉秀才觀之。自是指物作詩立就，其文理皆有可觀者。邑人奇之，稍稍賓客其父，或以錢幣乞之。父利其然也，日扳仲永環謁於邑人，不使學。
+                    </p>
+                    <p>江西金谿縣人方仲永，家裡世代務農。仲永長到五歲，不曾見過紙墨筆硯等文具，有一天忽然哭著要這些文具。仲永的父親感到十分驚奇，從鄰近的人家借來給他，仲永立即寫下詩四句，並寫上自己的名字。詩作內容主要以奉養父母，團結親族為旨意，並傳給全鄉的秀才觀看。從此，人們指著東西要讓他作詩，他都能立即完成，這些詩的文采義理，都有值得欣賞之處。
+                    </p>
+                    <p>鄉人把仲永視為奇才，逐漸把他父親當作貴賓來接待，甚至有人用錢財求取仲永的詩作。父親認為有利可圖，每天帶著仲永到處拜見同鄉里的人，不讓他學習。</p>
+                    <h5 class="hide-title">第二段</h5>
+                    <p class="originText">予聞之也久。明道中，從先人還家，於舅家見之，十二三矣。令作詩，不能稱前時之聞。又七年，還自揚州，復到舅家，問焉。曰：「泯然眾人矣。」</p>
+                    <p>我聽說這件事已經很久了。明道年間，我跟隨先父返回故鄉，在舅舅家見到方仲永，那時他已經十二、三歲了。讓他作詩，卻發現他的詩文采、內容，已經跟以前的傳聞並不相稱。又過了七年，我從揚州回到家鄉，再到舅舅家，問起仲永的近況。得到的回答是：「他的才華完全消失，已經跟一般人沒什麼兩樣了！」
+                    </p>
+                    <h5 class="hide-title">第三段</h5>
+                    <p class="originText">予聞之也久。明道中，從先人還家，於舅家見之，十二三矣。令作詩，不能稱前時之聞。又七年，還自揚州，復到舅家，問焉。曰：「泯然眾人矣。」</p>
+                    <p>王先生（指作者王安石自己）評論說：仲永的通曉穎悟，是來自天賦，他的才華勝過一般人。最後他淪為普通人，就是因為沒能受到應有的教育。</p>
+                    <p>仲永的天賦才華，是那樣優異，只因為沒有接受後天的教育，尚且要淪為普通人；而如今那些沒有天賦的，本就是平庸的普通人，如果還不接受教育的話，恐怕連普通人都不如吧？</p>
+                    <h5 class="hide-title">第四段</h5>
+                    <p class="originText">彼其受之天也，如此其賢也，不受之人，且為眾人；今夫不受之天，固眾人，又不受之人，得為眾人而已邪？</p>
+                    <p>像他（方仲永）這樣憑藉上天賦予的才能，天資是如此聰慧，如果不接受後天的教育，最終還是會成為普通人；那麼那些本身並沒有上天賦予天資的普通人，如果再不接受後天的教育，（其下場）難道只是淪為普通人就罷了嗎？（意指只會更糟）
+                    </p>
+                    <h5 class="hide-title">第33題</h5>
+                    <p class="addSubtitle1">依照上文，關於方仲永的介紹不包含：<br><br>(A) 家庭背景世代務農<br>(B) 是個無師自通的神童<br>(C)
+                        接受良好的賢才教育<br>(D) 成為父母的搖錢樹</p>
+                    <p>答案：(C) 接受良好的賢才教育</p>
+                    <h5 class="hide-title">第34題</h5>
+                    <p class="addSubtitle1">「泯然」的「然」詞性與何者相同：<br><br>(A) 「心」之所向<br>(B) 黃鶴樓送孟浩然「之」廣陵<br>(C) 於舅家見「之」<br>(D)
+                        昂首觀「之」</p>
+                    <p>答案：(A) 「心」之所向</p>
+                    <p>泯： 「磨滅、消失、滅絕」的意思</p>
+                    <p>「泯然」意思是「完全消失、磨滅的樣子」，「泯然眾人矣」是形容方仲永因為後天沒有繼續學習，他原本過人的天賦已經完全消失，變得跟普通人（眾人）一模一樣了。「泯然」的「然」：屬於「助詞」，意思是「……的樣子」
+                    </p>
+                    <p>(A) 「心」之所向：助詞，相當於白話文的「的」</p>
+                    <p>(B) 送孟浩然「之」廣陵：動詞，去、往之意</p>
+                    <p>(C) 於舅家見「之」：代名詞，指「方仲永」</p>
+                    <p>(D) 昂首觀「之」：代名詞，指蚊子</p>
+                    <h5 class="hide-title">第35題</h5>
+                    <p class="addSubtitle1">「彼其受之天也，如此其賢也，不受之人，且為眾人；今夫不受之天，固眾人，又不受之人，得為眾人而已邪？」其意義最接近：<br><br>(A)
+                        普通資質的人，可以透過教育而培育成天才<br>(B) 如果天才不受教育，會變得比一般人能力更差<br>(C) 一般人就算受教育，也永遠追不到天才的能力<br>(D)
+                        儘管是天賦異稟，沒接受教育，有可能淪為一般人的程度</p>
+                    <p>答案：(D) 儘管是天賦異稟，沒接受教育，有可能淪為一般人的程度</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="sideRight"></div>
+    </div>
+    <div class="container">
+        <div class="sideLeft"></div>
+        <div class="center source textStyle">
+        </div>
+        <div class="sideRight"></div>
+    </div>
+</body>
+
+</html>
