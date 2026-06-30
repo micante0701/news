@@ -119,7 +119,7 @@
             box-sizing: border-box;
             /* 彈出文字 字體大小 */
             /* 原本1，暫時改3 */
-            font-size: 5rem;
+            font-size: 3.5rem;
             /* 輕微陰影提升可讀性 */
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
         }
