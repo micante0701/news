@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>帝國霸業</title>
     <style>
         :root {
@@ -21,15 +23,19 @@
             padding: 10px;
             background: var(--bg-color);
             color: var(--text-color);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
-            overflow: hidden;
         }
 
-        h1, h2, h3 { margin: 0 0 5px 0; color: #f8fafc; }
-        
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 5px 0;
+            color: #f8fafc;
+        }
+
         /* 頂部導覽列 */
         .top-bar {
             display: flex;
@@ -41,9 +47,20 @@
             border: 1px solid var(--border-color);
             margin-bottom: 8px;
             flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .resource-group span { font-weight: bold; margin-right: 15px; }
+        .resource-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .resource-group span {
+            font-weight: bold;
+            margin-right: 5px;
+        }
 
         /* 標籤頁面選單 */
         .nav-tabs {
@@ -51,11 +68,13 @@
             gap: 5px;
             margin-bottom: 8px;
             flex-shrink: 0;
+            overflow-x: auto;
+            padding-bottom: 4px;
         }
 
         .nav-tab {
             flex: 1;
-            padding: 8px;
+            padding: 10px 8px;
             background: #2a303c;
             border: 1px solid var(--border-color);
             color: var(--text-color);
@@ -63,58 +82,112 @@
             cursor: pointer;
             font-weight: bold;
             text-align: center;
+            white-space: nowrap;
             transition: all 0.2s;
         }
 
-        .nav-tab:hover { background: #374151; }
-        .nav-tab.active { background: var(--accent-color); border-color: #60a5fa; }
+        .nav-tab:hover {
+            background: #374151;
+        }
 
-        /* 遊戲主視圖容器 (固定高度單螢幕不捲動) */
+        .nav-tab.active {
+            background: var(--accent-color);
+            border-color: #60a5fa;
+        }
+
+        /* 遊戲主視圖容器 */
         .game-viewport {
             flex: 1;
             background: var(--panel-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 15px;
-            overflow-y: auto;
             display: flex;
+            flex-direction: column;
+            min-height: 400px;
+        }
+
+        .tab-content {
+            display: none;
+            height: 100%;
             flex-direction: column;
         }
 
-        .tab-content { display: none; height: 100%; flex-direction: column; }
-        .tab-content.active { display: flex; }
+        .tab-content.active {
+            display: flex;
+        }
 
         /* 網格與清單 */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; height: 100%; }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .item-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 6px 0;
-            padding: 8px;
-            background: rgba(255,255,255,0.03);
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
             border-radius: 6px;
+            gap: 10px;
         }
 
-        button { cursor: pointer; padding: 6px 12px; background: var(--accent-color); color: white; border: none; border-radius: 4px; font-weight: bold; font-size: 12px; }
-        button:hover { filter: brightness(1.2); }
-        button:active { transform: scale(0.98); }
-        button.danger { background: var(--danger-color); }
-        button.success { background: var(--success-color); }
-        button.warning { background: #f59e0b; }
+        button {
+            cursor: pointer;
+            padding: 8px 12px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            filter: brightness(1.2);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        button.danger {
+            background: var(--danger-color);
+        }
+
+        button.success {
+            background: var(--success-color);
+        }
+
+        button.warning {
+            background: #f59e0b;
+        }
 
         /* 防禦警告橫幅 */
         .defense-banner {
             background: rgba(239, 68, 68, 0.15);
             border: 1px solid var(--danger-color);
-            padding: 8px 12px;
+            padding: 10px 12px;
             border-radius: 6px;
             margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 5px;
         }
 
         /* 浮動提示 */
@@ -130,21 +203,66 @@
             z-index: 9999;
             animation: floatUp 0.7s ease-out forwards;
             white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
+
         @keyframes floatUp {
-            0% { opacity: 1; transform: translate(-50%, 0); }
-            100% { opacity: 0; transform: translate(-50%, -30px); }
+            0% {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -30px);
+            }
         }
 
         /* 遊戲結束遮罩 */
-        #gameoverModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 99999; justify-content: center; align-items: center; text-align: center; color: white; }
-        .gameover-box { background: var(--panel-bg); padding: 30px; border-radius: 10px; border: 2px solid var(--danger-color); max-width: 400px; }
+        #gameoverModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 15px;
+            box-sizing: border-box;
+        }
 
-        .debug-pre { background: #0f1115; color: #34d399; padding: 8px; font-size: 10px; overflow-x: auto; border-radius: 4px; max-height: 100px; margin-top: auto; }
-        .sub-text { font-size: 11px; color: #94a3b8; }
+        .gameover-box {
+            background: var(--panel-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid var(--danger-color);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .debug-pre {
+            background: #0f1115;
+            color: #34d399;
+            padding: 8px;
+            font-size: 10px;
+            overflow-x: auto;
+            border-radius: 4px;
+            max-height: 150px;
+            margin-top: auto;
+        }
+
+        .sub-text {
+            font-size: 11px;
+            color: #94a3b8;
+        }
     </style>
 </head>
+
 <body>
 
     <div id="gameoverModal">
@@ -153,7 +271,7 @@
             <p id="gameoverReason">你的軍隊無法抵擋敵軍的猛烈襲擊，帝國被摧毀了！</p>
             <p>最終生存波數：<span id="finalWave" style="color: gold; font-weight: bold;">0</span></p>
             <p>來襲敵軍戰力：<span id="finalEnemyPowerDisplay" style="color: var(--danger-color); font-weight: bold;">0</span></p>
-            <button class="danger" onclick="resetGame()" style="padding: 8px 16px; font-size: 14px;">東山再起</button>
+            <button class="danger" onclick="resetGame()" style="padding: 10px 20px; font-size: 14px; margin-top: 10px;">東山再起</button>
         </div>
     </div>
 
@@ -177,28 +295,28 @@
     <div class="defense-banner">
         <div>
             <strong>🚨 第 <span id="currentWave">1</span> 波入侵倒數: <span id="attackTimer" style="color: var(--danger-color); font-size: 1.1em;">60</span>s</strong>
-            <span style="margin-left: 15px;" class="sub-text">預估敵軍戰力: <span id="incomingPower">12</span> | 我方戰力: <span id="myPower" style="color: var(--success-color);">0</span></span>
+            <span style="margin-left: 10px;" class="sub-text">預估敵軍: <span id="incomingPower">12</span> | 我方: <span id="myPower" style="color: var(--success-color);">0</span></span>
         </div>
     </div>
 
     <!-- 導覽頁籤選單 -->
     <div class="nav-tabs">
-        <div class="nav-tab active" onclick="switchTab('villageTab', this)">📍 內政與村莊</div>
-        <div class="nav-tab" onclick="switchTab('militaryTab', this)">⚔️ 軍事與裝備</div>
-        <div class="nav-tab" onclick="switchTab('battleTab', this)">🗺️ 遠征地圖</div>
-        <div class="nav-tab" onclick="switchTab('debugTab', this)">⚙️ 系統設定</div>
+        <div class="nav-tab active" onclick="switchTab('villageTab', this)">📍 內政</div>
+        <div class="nav-tab" onclick="switchTab('militaryTab', this)">⚔️ 軍事</div>
+        <div class="nav-tab" onclick="switchTab('battleTab', this)">🗺️ 遠征</div>
+        <div class="nav-tab" onclick="switchTab('debugTab', this)">⚙️ 設定</div>
     </div>
 
-    <!-- 遊戲主視圖區域 (固定於單螢幕) -->
+    <!-- 遊戲主視圖區域 -->
     <div class="game-viewport">
-        
+
         <!-- 1. 內政與村莊頁籤 -->
         <div id="villageTab" class="tab-content active">
-            <div style="margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
-                <div id="villageTabs" style="display: flex; gap: 5px;"></div>
+            <div style="margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <div id="villageTabs" style="display: flex; gap: 5px; flex-wrap: wrap;"></div>
                 <button class="success" onclick="createNewVillage(event)">開拓新村莊 (費用: <span id="newVillageCost">1000</span>)</button>
             </div>
-            <div class="panel" style="flex: 1; overflow-y: auto; margin: 0; background: transparent; padding: 0; border: none;">
+            <div style="flex: 1; overflow-y: auto;">
                 <h3 id="currentVillageTitle">內政建設</h3>
                 <div id="buildingList"></div>
             </div>
@@ -212,7 +330,7 @@
                     <div id="troopList"></div>
                 </div>
                 <div style="overflow-y: auto;">
-                    <h3>兵種武裝強化 (武器/裝甲)</h3>
+                    <h3>兵種武裝強化</h3>
                     <div id="equipmentList"></div>
                 </div>
             </div>
@@ -221,7 +339,7 @@
         <!-- 3. 遠征地圖頁籤 -->
         <div id="battleTab" class="tab-content">
             <h3>主動遠征據點</h3>
-            <div class="sub-text" style="margin-bottom: 5px;">裝甲等級能大幅降低兵力折損率，武器能提升攻擊力。</div>
+            <div class="sub-text" style="margin-bottom: 8px;">裝甲等級能大幅降低兵力折損率，武器能提升攻擊力。</div>
             <div id="battleList" style="overflow-y: auto; flex: 1;"></div>
         </div>
 
@@ -240,7 +358,7 @@
         let gameData = {
             player: { gold: 200, glory: 0, totalClicks: 0 },
             defense: { wave: 1, timer: 60, nextPower: 12 },
-            
+
             currentVillageIndex: 0,
             villages: [
                 {
@@ -275,7 +393,6 @@
 
         const SAVE_KEY = "empire_game_save_v10";
 
-        // 頁籤切換邏輯
         function switchTab(tabId, element) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
@@ -283,18 +400,15 @@
             element.classList.add('active');
         }
 
-        // 計算實際攻擊力（包含武器等級加成：每級 +15% 基礎攻擊）
         function getTroopAttack(t) {
             let bonusMultiplier = 1 + (t.weaponLevel * 0.15);
             return Math.floor(t.baseAttack * bonusMultiplier);
         }
 
-        // 計算武器升級費用
         function getWeaponCost(t) {
             return Math.floor((t.baseCost * 0.8) * Math.pow(1.3, t.weaponLevel));
         }
 
-        // 計算裝甲升級費用
         function getArmorCost(t) {
             return Math.floor((t.baseCost * 1.0) * Math.pow(1.35, t.armorLevel));
         }
@@ -317,7 +431,6 @@
             if (saved) {
                 try {
                     gameData = JSON.parse(saved);
-                    // 兼容舊存檔防呆補全
                     gameData.troops.forEach(t => {
                         if (t.weaponLevel === undefined) t.weaponLevel = 0;
                         if (t.armorLevel === undefined) t.armorLevel = 0;
@@ -366,7 +479,6 @@
             return power;
         }
 
-        // 裝甲提升不被打死率：裝甲等級越高，折損率越低（最低減免至 10% 的基礎損耗）
         function applyTroopLosses(myPower, enemyPower, isVictory) {
             let lostSummary = [];
             let powerRatio = myPower / Math.max(1, enemyPower);
@@ -374,7 +486,6 @@
 
             gameData.troops.forEach(t => {
                 if (t.count > 0) {
-                    // 裝甲減免係數：每級裝甲減少 5% 的損耗率 (最低折減至 0.2)
                     let armorReduction = Math.max(0.2, 1 - (t.armorLevel * 0.05));
                     let effectiveRate = t.lossRate * baseLossMultiplier * armorReduction;
                     if (!isVictory) effectiveRate *= 1.5;
@@ -386,7 +497,7 @@
                         }
                     }
                     deadCount = Math.min(deadCount, Math.floor(t.count * 0.5));
-                    
+
                     if (deadCount > 0) {
                         t.count -= deadCount;
                         lostSummary.push(`${t.name}x${deadCount}`);
@@ -403,7 +514,7 @@
 
         function createNewVillage(event) {
             let cost = getNewVillageCost();
-            let x = event.clientX, y = event.clientY;
+            let x = event.clientX || window.innerWidth / 2, y = event.clientY || 200;
 
             if (gameData.player.gold >= cost) {
                 gameData.player.gold -= cost;
@@ -434,13 +545,13 @@
         function buyBuilding(index, event) {
             let currentVillage = gameData.villages[gameData.currentVillageIndex];
             let b = currentVillage.buildings[index];
-            let x = event.clientX, y = event.clientY;
+            let x = event.clientX || window.innerWidth / 2, y = event.clientY || 200;
 
             if (gameData.player.gold >= b.cost) {
                 gameData.player.gold -= b.cost;
                 b.level += 1;
                 b.cost = Math.floor(b.cost * 1.18);
-                showFloatingTip(x, y, `-${b.cost} 💰`, "#10b981");
+                showFloatingTip(x, y, `擴建成功！`, "#10b981");
                 updateUI();
                 saveGame();
             } else {
@@ -451,7 +562,7 @@
         function recruitTroop(index, event) {
             let t = gameData.troops[index];
             let currentCost = getTroopCost(t);
-            let x = event.clientX, y = event.clientY;
+            let x = event.clientX || window.innerWidth / 2, y = event.clientY || 200;
 
             if (gameData.player.gold >= currentCost) {
                 gameData.player.gold -= currentCost;
@@ -464,11 +575,10 @@
             }
         }
 
-        // 強化武器
         function upgradeWeapon(index, event) {
             let t = gameData.troops[index];
             let cost = getWeaponCost(t);
-            let x = event.clientX, y = event.clientY;
+            let x = event.clientX || window.innerWidth / 2, y = event.clientY || 200;
 
             if (gameData.player.gold >= cost) {
                 gameData.player.gold -= cost;
@@ -481,11 +591,10 @@
             }
         }
 
-        // 強化裝甲
         function upgradeArmor(index, event) {
             let t = gameData.troops[index];
             let cost = getArmorCost(t);
-            let x = event.clientX, y = event.clientY;
+            let x = event.clientX || window.innerWidth / 2, y = event.clientY || 200;
 
             if (gameData.player.gold >= cost) {
                 gameData.player.gold -= cost;
@@ -501,7 +610,7 @@
         function startBattle(index, event) {
             let enemy = gameData.battles[index];
             let rawPower = calculateTotalPower();
-            let x = event.clientX, y = event.clientY;
+            let x = event.clientX || window.innerWidth / 2, y = event.clientY || 200;
 
             let luckFactor = 0.85 + Math.random() * 0.3;
             let actualMyPower = Math.floor(rawPower * luckFactor);
@@ -522,7 +631,7 @@
 
         function manualHarvest(event) {
             gameData.player.gold += 5;
-            showFloatingTip(event.clientX, event.clientY, "+5 💰", "#fbbf24");
+            showFloatingTip(event.clientX || window.innerWidth / 2, event.clientY || 200, "+5 💰", "#fbbf24");
             updateUI();
         }
 
@@ -537,7 +646,7 @@
                 let reward = gameData.defense.wave * 200;
                 gameData.player.gold += reward;
                 alert(`🛡️ 第 ${gameData.defense.wave} 波敵軍襲擊被成功擊退！\n敵軍戰力: ${finalEnemyPower} | 我方戰力: ${myPower}\n獲得防衛獎勵: ${reward} 金幣${lossText}`);
-                
+
                 gameData.defense.wave++;
                 gameData.defense.timer = 60;
                 gameData.defense.nextPower = Math.floor(gameData.defense.nextPower * 1.4);
@@ -563,7 +672,6 @@
             document.getElementById('attackTimer').innerText = gameData.defense.timer;
             document.getElementById('incomingPower').innerText = gameData.defense.nextPower;
 
-            // 村莊分頁按鈕
             let tabsContainer = document.getElementById('villageTabs');
             tabsContainer.innerHTML = "";
             gameData.villages.forEach((v, i) => {
@@ -572,7 +680,6 @@
             });
             document.getElementById('newVillageCost').innerText = getNewVillageCost() + " 💰";
 
-            // 當前村莊建築
             let currentVillage = gameData.villages[gameData.currentVillageIndex];
             document.getElementById('currentVillageTitle').innerText = `內政與生產 (${currentVillage.name})`;
             let bContainer = document.getElementById('buildingList');
@@ -582,14 +689,13 @@
                     <div class="item-row">
                         <div>
                             <strong>${b.name}</strong> (Lv.${b.level})<br>
-                            <span class="sub-text">產值: +${b.baseProduction * b.level}/s | 費用: ${b.cost} 💰</span>
+                            <span class="sub-text">產值: +${b.level * b.baseProduction}/s | 費用: ${b.cost} 💰</span>
                         </div>
                         <button onclick="buyBuilding(${i}, event)">擴建</button>
                     </div>
                 `;
             });
 
-            // 徵兵清單
             let tContainer = document.getElementById('troopList');
             tContainer.innerHTML = "";
             gameData.troops.forEach((t, i) => {
@@ -604,7 +710,6 @@
                 `;
             });
 
-            // 裝備強化清單
             let eContainer = document.getElementById('equipmentList');
             eContainer.innerHTML = "";
             gameData.troops.forEach((t, i) => {
@@ -614,15 +719,14 @@
                             <strong>${t.name}</strong><br>
                             <span class="sub-text">⚔️ 武器 Lv.${t.weaponLevel} | 🛡️ 裝甲 Lv.${t.armorLevel}</span>
                         </div>
-                        <div>
-                            <button class="warning" onclick="upgradeWeapon(${i}, event)" style="margin-right: 4px;">武 (+${getWeaponCost(t)})</button>
-                            <button onclick="upgradeArmor(${i}, event)">甲 (+${getArmorCost(t)})</button>
+                        <div style="display: flex; gap: 4px;">
+                            <button class="warning" onclick="upgradeWeapon(${i}, event)">武(+${getWeaponCost(t)})</button>
+                            <button onclick="upgradeArmor(${i}, event)">甲(+${getArmorCost(t)})</button>
                         </div>
                     </div>
                 `;
             });
 
-            // 遠征任務
             let btlContainer = document.getElementById('battleList');
             btlContainer.innerHTML = "";
             gameData.battles.forEach((e, i) => {
@@ -662,4 +766,5 @@
         updateUI();
     </script>
 </body>
+
 </html>
